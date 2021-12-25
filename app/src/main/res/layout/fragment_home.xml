@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/gray0"
+    android:background="@color/gray2"
     tools:context=".fragment.HomeFragment">
 
     <LinearLayout
@@ -39,20 +39,22 @@
             <Spinner
                 android:id="@+id/snSido"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"/>
+                android:layout_height="32dp"
+                android:spinnerMode="dialog"/>
 
             <Spinner
                 android:id="@+id/snGugun"
                 android:layout_marginStart="32dp"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"/>
+                android:layout_height="32dp"
+                android:spinnerMode="dialog"/>
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/ibMore"
             android:layout_marginHorizontal="16dp"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:background="@drawable/sharp_more_vert_24"
             android:backgroundTint="@color/black"/>
     </LinearLayout>
@@ -111,7 +113,8 @@
                 android:id="@+id/rv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="8dp"/>
+                android:layout_marginHorizontal="8dp"
+                android:overScrollMode="never"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>
