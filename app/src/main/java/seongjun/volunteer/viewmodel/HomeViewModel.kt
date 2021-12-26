@@ -1,12 +1,10 @@
 package seongjun.volunteer.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerData
 import seongjun.volunteer.repository.Repository
 
@@ -14,32 +12,45 @@ class HomeViewModel: ViewModel() {
 
     val repository = Repository.getInstance()
 
-    var volunteerList: ArrayList<VolunteerData> = ArrayList()
-    val bookMarkList: LiveData<List<BookMarkData>> = repository.getBookMarkList()
+    var volunteerList: MutableLiveData<MutableList<VolunteerData>> = MutableLiveData<MutableList<VolunteerData>>().apply { value = ArrayList() }
 
-    var isComplete: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
     val isLoading: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
-    val isSearching: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
-    val isEnd: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
-    val isDetailSpinner: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
-    val pageNum: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 1 }
+    val isComplete: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
     val sidoCode: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
     val gugunCode: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
-    val searchText: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
+
+    var page = 1
+    var isEnd = false
+    var isSearching = false
+    var searchText = ""
 
     init {
-        getVolunteerList()
-//        Log.d("@@@", "HomeViewModel init ${volunteerList.value!!.size}")
-    }
+        Log.d("###", "뷰모델: 새로생성")
+        loadVolunteerList() }
 
-    fun getVolunteerList() {
-        if (!isLoading.value!! && !isSearching.value!! && !isEnd.value!!) { // 지역별로 조회
-            viewModelScope.launch {
+    fun loadVolunteerList() {
+        viewModelScope.launch {
+            if (!isLoading.value!! && !isEnd) {
                 isLoading.value = true
-                volunteerList.addAll(repository.getVolunteerList(sidoCode.value!!, gugunCode.value!!, pageNum.value!!))
-                isLoading.value = false
+
+                if (page == 1) volunteerList.value!!.clear()
+
+                if(!isSearching) { // 지역별로 조회
+                    val result = repository.getVolunteerList(sidoCode.value!!, gugunCode.value!!, page)
+                    if(result.size == 0) { isEnd = true }
+                    else { volunteerList.value!!.addAll(result) }
+                }
+
+                if(isSearching) { // 검색어로 조회
+                    val result = repository.getVolunteerList(searchText, page)
+                    if(result.size == 0) { isEnd = true }
+                    else { volunteerList.value!!.addAll(result) }
+                }
+
+                page++
                 isComplete.value = true
+                isLoading.value = false
             }
-        } else {isEnd.value = true}
+        }
     }
 }

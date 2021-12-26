@@ -7,16 +7,12 @@ import seongjun.volunteer.model.*
 
 interface RetrofitApi {
 
-    @GET("volunteer_list")
-    suspend fun getTest(@Query("schSido")schSido: String, @Query("schSign1")schSign1: String, @Query("pageNo")pageNo: Int) : Deferred<List<VolunteerData>>
-
-
     // 봉사활동
     @GET("volunteer_list")
-    suspend fun getVolunteerList(@Query("schSido")schSido: String, @Query("schSign1")schSign1: String, @Query("pageNo")pageNo: Int) : Response<ArrayList<VolunteerData>>
+    suspend fun getVolunteerList(@Query("schSido")schSido: String, @Query("schSign1")schSign1: String, @Query("pageNo")pageNo: Int) : Response<MutableList<VolunteerData>>
 
     @GET("volunteer_list")
-    suspend fun getVolunteerList(@Query("keyword")keyword: String, @Query("pageNo")pageNo: Int) : Response<ArrayList<VolunteerData>>
+    suspend fun getVolunteerList(@Query("keyword")keyword: String, @Query("pageNo")pageNo: Int) : Response<MutableList<VolunteerData>>
 
     @GET("volunteer_item")
     suspend fun getVolunteer(@Query("progrmRegistNo")progrmRegistNo: Int) : Response<DetailData>

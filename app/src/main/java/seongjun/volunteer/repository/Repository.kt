@@ -3,6 +3,7 @@ package seongjun.volunteer.repository
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.DetailData
 import seongjun.volunteer.model.VolunteerData
@@ -26,17 +27,14 @@ class Repository(context: Context) {
     }
 
     // Use Retrofit
-    suspend fun getTest(pageNum: Int) = RetrofitInstance.api.getTest("", "", pageNum).await()
-
-    // Use Retrofit
-    suspend fun getVolunteerList(sido: String, gugun: String, pageNum: Int): ArrayList<VolunteerData> {
+    suspend fun getVolunteerList(sido: String, gugun: String, pageNum: Int): MutableList<VolunteerData> {
         val response = RetrofitInstance.api.getVolunteerList(sido, gugun, pageNum)
-        return if (response.isSuccessful) response.body() as ArrayList<VolunteerData> else ArrayList()
+        return if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
     }
 
-    suspend fun getVolunteerList(keyword: String, pageNum: Int): ArrayList<VolunteerData> {
+    suspend fun getVolunteerList(keyword: String, pageNum: Int): MutableList<VolunteerData> {
         val response = RetrofitInstance.api.getVolunteerList(keyword, pageNum)
-        return if (response.isSuccessful) response.body() as ArrayList<VolunteerData> else ArrayList()
+        return if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
     }
 
     suspend fun getVolunteer(program_id: Int): DetailData {
@@ -48,10 +46,7 @@ class Repository(context: Context) {
         private var instance: Repository? = null
 
         fun initialize(context: Context) {
-            if (instance == null) {
-                instance = Repository(context)
-                Log.d("@@@", "initialize: $instance")
-            }
+            if (instance == null) { instance = Repository(context) }
         }
 
         fun getInstance(): Repository {

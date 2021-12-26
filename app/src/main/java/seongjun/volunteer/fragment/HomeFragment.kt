@@ -4,11 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,11 +54,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun setView() {
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
+//        binding.viewModel = viewModel
+//        binding.lifecycleOwner = viewLifecycleOwner
 
         mainAdapter = MainAdapter().apply {
-            setHasStableIds(true)
             setOnItemClickListener(object: MainAdapter.OnItemClickListener{
                 override fun onItemClick(v: View, item: VolunteerData) { // 화면 이동
                     startActivity(Intent(mainActivity, DetailActivity::class.java).apply { putExtra("program_id", item.progrmRegistNo) })
@@ -70,7 +72,7 @@ class HomeFragment : Fragment() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) { // 끝에 도달했는지 확인
                     super.onScrolled(recyclerView, dx, dy)
                         if ((recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition() == mainAdapter.itemCount - 1){
-//                            viewModel.getVolunteerList()
+                            viewModel.loadVolunteerList()
                         }
                 }
             })
@@ -80,27 +82,27 @@ class HomeFragment : Fragment() {
             adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, LocationInfo.sidoName)
             onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    viewModel.isSearching.value = false
                     viewModel.sidoCode.value = LocationInfo.sidoCode[position]
 
                     when(viewModel.sidoCode.value) {
                         "6110000" -> {
-                            viewModel.isDetailSpinner.value = true
                             binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, LocationInfo.seoulName)
+                            binding.snGugun.visibility = View.VISIBLE
                         }
                         "6410000" -> {
-                            viewModel.isDetailSpinner.value = true
                             binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, LocationInfo.gyeonggiName)
+                            binding.snGugun.visibility = View.VISIBLE
                         }
                         else -> {
-                            viewModel.isDetailSpinner.value = false
+                            binding.snGugun.visibility = View.GONE
                         }
                     }
 
-                    viewModel.isEnd.value = false
                     viewModel.gugunCode.value = ""
-                    viewModel.pageNum.value = 1
-//                    viewModel.getVolunteerList()
+                    viewModel.isSearching = false
+                    viewModel.isEnd = false
+                    viewModel.page = 1
+                    viewModel.loadVolunteerList()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -110,7 +112,6 @@ class HomeFragment : Fragment() {
         binding.snGugun.apply {
             onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    viewModel.isSearching.value = false
 
                     when(viewModel.sidoCode.value) {
                         "6110000" -> viewModel.gugunCode.value = LocationInfo.seoulCode[position]
@@ -118,50 +119,60 @@ class HomeFragment : Fragment() {
                         else -> viewModel.gugunCode.value = ""
                     }
 
-                    viewModel.isEnd.value = false
-                    viewModel.pageNum.value = 1
-//                    viewModel.getVolunteerList()
+                    viewModel.isSearching = false
+                    viewModel.isEnd = false
+                    viewModel.page = 1
+                    viewModel.loadVolunteerList()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {}
             }
         }
 
-        binding.etSearch.setOnEditorActionListener { textView, i, keyEvent ->
-            val searchText = textView.text.toString()
-            if (searchText.isEmpty()) {
-                textView.clearFocus()
-                textView.isFocusable = false
-                textView.isFocusableInTouchMode = true
-                return@setOnEditorActionListener true
-            }
-
-            viewModel.pageNum.value = 1
-            viewModel.isSearching.value = true
-            viewModel.searchText.value = searchText
-//            viewModel.getVolunteerList()
-            return@setOnEditorActionListener false
+        binding.etSearch.addTextChangedListener {
+            if (binding.etSearch.text.toString() != "") binding.ibCancel.visibility = View.VISIBLE
+            else binding.ibCancel.visibility = View.GONE
         }
+
+        binding.etSearch.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
+                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                    if (binding.etSearch.text.toString() != "") {
+                        viewModel.isSearching = true
+                        viewModel.searchText = binding.etSearch.text.toString()
+                        viewModel.isEnd = false
+                        viewModel.page = 1
+                        viewModel.loadVolunteerList()
+
+                        // 키보드 내리기
+                        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
+                    }
+                    return true
+                }
+                return false
+            }
+        })
 
         binding.ibCancel.setOnClickListener {
             binding.etSearch.setText("")
+
+            // 키보드 내리기
+            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
+
+            binding.rv.requestFocus()
         }
     }
 
     private fun setObserver() {
         viewModel.isComplete.observe(viewLifecycleOwner, {
-//            mainAdapter.setData(viewModel.volunteerList.value!!, viewModel.bookMarkList.value!!)
-//            Log.d("@@@", "observe ${viewModel.volunteerList.value!!.size}")
+//            Log.d("###", "옵저버에서 감지")
             if (viewModel.isComplete.value!!) {
-                Log.d("@@@", "1111111111")
-
                 viewModel.isComplete.value = false
-                if (viewModel.pageNum.value == 1) {
-                    mainAdapter.setClear()
-                }
-                mainAdapter.setData(viewModel.volunteerList)
-                viewModel.pageNum.value = viewModel.pageNum.value!! + 1
-                Log.d("@@@", "222222222222")
+                mainAdapter.setData(viewModel.volunteerList.value!!)
+                if (viewModel.volunteerList.value!!.size > 0) binding.tvEmpty.visibility = View.GONE
+                else binding.tvEmpty.visibility = View.VISIBLE
             }
         })
 

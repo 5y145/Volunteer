@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
+import seongjun.volunteer.ApplicationClass
 import seongjun.volunteer.DetailActivity
 import seongjun.volunteer.databinding.ItemVolunteerBinding
 import seongjun.volunteer.model.BookMarkData
@@ -16,7 +17,7 @@ import seongjun.volunteer.model.VolunteerData
 
 class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
 
-    private var list: ArrayList<VolunteerData> = ArrayList()
+    private var list: MutableList<VolunteerData> = ArrayList()
 //    private var bookMarkList: List<BookMarkData> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -42,14 +43,8 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(newList: ArrayList<VolunteerData>) {
-//        list.addAll(newList)
+    fun setData(newList: MutableList<VolunteerData>) {
         list = newList
-        notifyDataSetChanged()
-    }
-
-    fun setClear() {
-        list.clear()
         notifyDataSetChanged()
     }
 

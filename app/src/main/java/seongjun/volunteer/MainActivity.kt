@@ -2,22 +2,9 @@ package seongjun.volunteer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import seongjun.volunteer.adapter.MainAdapter
 import seongjun.volunteer.databinding.ActivityMainBinding
-import seongjun.volunteer.fragment.HomeFragment
-import seongjun.volunteer.repository.Repository
 
 class MainActivity : AppCompatActivity() {
 
