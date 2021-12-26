@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="seongjun.volunteer.model.MainData" />
+            type="seongjun.volunteer.model.VolunteerData" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -32,7 +32,7 @@
 
             <TextView
                 android:id="@+id/tvHost"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_regular"
                 android:hint="host"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/orange"
                 android:textColor="@color/white"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:textSize="12dp"
                 android:text="모집 중"
                 app:layout_constraintStart_toEndOf="@+id/tvHost"
@@ -59,9 +59,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/orange"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:textSize="12dp"
-                android:hint="12/1 ~ 12/2"
+                android:hint="00/00 ~ 00/00"
                 app:layout_constraintStart_toEndOf="@+id/tvState"
                 app:layout_constraintTop_toTopOf="@+id/ivLocate"
                 app:layout_constraintBottom_toBottomOf="@+id/ivLocate"/>
@@ -85,7 +85,7 @@
                 android:textColor="@color/black"
                 android:layout_margin="8dp"
                 android:textSize="16dp"
-                android:hint="ㅇㅇ시 봉사활동 모집"
+                android:hint="\n"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivLocate"/>

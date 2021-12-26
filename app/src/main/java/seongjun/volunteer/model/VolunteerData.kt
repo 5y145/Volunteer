@@ -1,6 +1,6 @@
 package seongjun.volunteer.model
 
-data class MainData(
+data class VolunteerData(
     val actBeginTm: Int,
     val actEndTm: Int,
     val actPlace: String,

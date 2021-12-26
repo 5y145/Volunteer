@@ -1,17 +1,13 @@
 package seongjun.volunteer.repository
 
-import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
-import seongjun.volunteer.ApplicationClass
 import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.DetailData
-import seongjun.volunteer.model.MainData
+import seongjun.volunteer.model.VolunteerData
 
 class Repository(context: Context) {
-
-    val ss = "zxczxczxc"
 
     // Room Dao
     private val dao = AppDataBase.getInstance(context).getDao()
@@ -30,18 +26,21 @@ class Repository(context: Context) {
     }
 
     // Use Retrofit
-    suspend fun getVolunteerList(): List<MainData> {
-        val response = RetrofitInstance.api.getVolunteerList("", "", 1)
-        return if (response.isSuccessful) response.body() as List<MainData> else ArrayList()
+    suspend fun getTest(pageNum: Int) = RetrofitInstance.api.getTest("", "", pageNum).await()
+
+    // Use Retrofit
+    suspend fun getVolunteerList(sido: String, gugun: String, pageNum: Int): ArrayList<VolunteerData> {
+        val response = RetrofitInstance.api.getVolunteerList(sido, gugun, pageNum)
+        return if (response.isSuccessful) response.body() as ArrayList<VolunteerData> else ArrayList()
     }
 
-//    suspend fun getVolunteerList(keyword: String, pageNo: Int): List<MainData> {
-//        val response = RetrofitInstance.api.getVolunteerList(keyword, pageNo)
-//        return if (response.isSuccessful) response.body() as List<MainData> else ArrayList()
-//    }
+    suspend fun getVolunteerList(keyword: String, pageNum: Int): ArrayList<VolunteerData> {
+        val response = RetrofitInstance.api.getVolunteerList(keyword, pageNum)
+        return if (response.isSuccessful) response.body() as ArrayList<VolunteerData> else ArrayList()
+    }
 
-    suspend fun getVolunteer(progrmRegistNo: Int): DetailData {
-        val response = RetrofitInstance.api.getVolunteer(progrmRegistNo)
+    suspend fun getVolunteer(program_id: Int): DetailData {
+        val response = RetrofitInstance.api.getVolunteer(program_id)
         return response.body() as DetailData
     }
 

@@ -1,20 +1,25 @@
 package seongjun.volunteer.repository
 
+import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*
 import seongjun.volunteer.model.*
 
 interface RetrofitApi {
 
+    @GET("volunteer_list")
+    suspend fun getTest(@Query("schSido")schSido: String, @Query("schSign1")schSign1: String, @Query("pageNo")pageNo: Int) : Deferred<List<VolunteerData>>
+
+
     // 봉사활동
     @GET("volunteer_list")
-    suspend fun getVolunteerList(@Query("schSido")schSido: String, @Query("schSign1")schSign1: String, @Query("pageNo")pageNo: Int) : Response<List<MainData>>
+    suspend fun getVolunteerList(@Query("schSido")schSido: String, @Query("schSign1")schSign1: String, @Query("pageNo")pageNo: Int) : Response<ArrayList<VolunteerData>>
 
     @GET("volunteer_list")
-    suspend fun getVolunteerList(keyword: String, pageNo: Int) : Response<List<MainData>>
+    suspend fun getVolunteerList(@Query("keyword")keyword: String, @Query("pageNo")pageNo: Int) : Response<ArrayList<VolunteerData>>
 
     @GET("volunteer_item")
-    suspend fun getVolunteer(progrmRegistNo: Int) : Response<DetailData>
+    suspend fun getVolunteer(@Query("progrmRegistNo")progrmRegistNo: Int) : Response<DetailData>
 
     // 유저
 //    @GET("user")

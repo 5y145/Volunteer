@@ -1,32 +1,19 @@
 package seongjun.volunteer
 
-import android.app.Application
-import android.content.Context
 import androidx.lifecycle.*
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import kotlinx.coroutines.launch
 import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.DetailData
-import seongjun.volunteer.model.MainData
+import seongjun.volunteer.model.VolunteerData
 import seongjun.volunteer.repository.Repository
 
 class MainViewModel: ViewModel() {
 
     val repository = Repository.getInstance()
 
-    var pageNumber = 1
-    var mainList: MutableLiveData<List<MainData>> = MutableLiveData(ArrayList())
+    var volunteerList: MutableLiveData<MutableList<VolunteerData>> = MutableLiveData(ArrayList())
     val bookMarkList: LiveData<List<BookMarkData>> = repository.getBookMarkList()
     var volunteerDetailData: MutableLiveData<DetailData?> = MutableLiveData(null)
-
-
-    init {
-        viewModelScope.launch {
-            mainList.value = repository.getVolunteerList()
-        }
-
-    }
 
     // Use Room
     fun addBookMark(bookMarkData: BookMarkData) = viewModelScope.launch {
@@ -37,25 +24,31 @@ class MainViewModel: ViewModel() {
         repository.removeBookMark(bookMarkData)
     }
 
-//    // Use Retrofit
-//    fun getVolunteerList(sido: String, gugun: String) {
-//        viewModelScope.launch {
-//            mainList.value = repository.getVolunteerList(sido, gugun, pageNumber)
-//            pageNumber++
-//        }
-//    }
-//
-//    fun getVolunteerList(keyword: String) {
-//        viewModelScope.launch {
-//            mainList.value = repository.getVolunteerList(keyword, pageNumber)
-//            pageNumber++
-//        }
-//    }
-//
-//    fun getVolunteer(progrmRegistNo: Int) {
-//        viewModelScope.launch {
-//            volunteerDetailData.value = null
-//            volunteerDetailData.value = repository.getVolunteer(progrmRegistNo)
-//        }
-//    }
+    // Use Retrofit
+    fun getVolunteerList(sido: String, gugun: String, pageNum: Int) {
+        viewModelScope.launch {
+            val result: MutableList<VolunteerData> = ArrayList()
+            val old = volunteerList.value
+            val new = repository.getVolunteerList(sido, gugun, pageNum)
+            result.addAll(old!!)
+            result.addAll(new)
+            volunteerList.value = result
+        }
+    }
+
+    fun getVolunteerList(keyword: String, pageNum: Int) {
+        viewModelScope.launch {
+            val result = repository.getVolunteerList(keyword, pageNum)
+            for (data in result) {
+                volunteerList.value!!.add(data)
+            }
+        }
+    }
+
+    fun getVolunteer(program_id: Int) {
+        viewModelScope.launch {
+            volunteerDetailData.value = null
+            volunteerDetailData.value = repository.getVolunteer(program_id)
+        }
+    }
 }

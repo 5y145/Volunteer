@@ -6,13 +6,16 @@
 
     <application
         android:name=".ApplicationClass"
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"
         android:label="1365 volunteer"
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Volunteer">
+        android:theme="@style/Theme.Volunteer"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".DetailActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
