@@ -1,4 +1,4 @@
-package seongjun.volunteer
+package seongjun.volunteer.activity
 
 import android.content.Intent
 import android.net.Uri
@@ -7,29 +7,31 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.observe
+import seongjun.volunteer.R
 import seongjun.volunteer.databinding.ActivityDetailBinding
 import seongjun.volunteer.model.BookMarkData
-import seongjun.volunteer.model.VolunteerData
-import seongjun.volunteer.repository.Repository
 import seongjun.volunteer.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
-    private val viewModel by viewModels<DetailViewModel>()
+    private val viewModel: DetailViewModel by viewModels()
 
-    private val volunteerData: VolunteerData by lazy { intent.getSerializableExtra("volunteerData") as VolunteerData }
+    private lateinit var programId: String
+    private lateinit var url: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        programId = intent.getStringExtra("programId").toString()
+        url = intent.getStringExtra("url").toString()
+
         binding.container.visibility = View.GONE
         binding.pb.visibility = View.VISIBLE
 
-        viewModel.loadVolunteer(volunteerData.progrmRegistNo)
+        viewModel.loadVolunteer(volunteerData.id)
         setObserver()
     }
 
@@ -70,10 +72,10 @@ class DetailActivity : AppCompatActivity() {
         }
 
         binding.ibBookMark.setOnClickListener {
-            if (!viewModel.isBookMark(volunteerData.progrmRegistNo)) {
+            if (!viewModel.isBookMark(volunteerData.id)) {
                 viewModel.addBookMark(
                     BookMarkData(0,
-                        volunteerData.progrmRegistNo,
+                        volunteerData.id,
                         volunteerData.progrmSj,
                         volunteerData.progrmSttusSe,
                         volunteerData.progrmBgnde.toInt(),
@@ -83,7 +85,7 @@ class DetailActivity : AppCompatActivity() {
                 )
                 binding.ibBookMark.setBackgroundColor(applicationContext.resources.getColor(R.color.orange))
             } else {
-                viewModel.removeBookMark(volunteerData.progrmRegistNo)
+                viewModel.removeBookMark(volunteerData.id)
                 binding.ibBookMark.setBackgroundColor(applicationContext.resources.getColor(R.color.gray7))
             }
         }

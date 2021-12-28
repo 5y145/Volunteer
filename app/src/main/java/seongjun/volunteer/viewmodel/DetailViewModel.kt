@@ -1,20 +1,19 @@
 package seongjun.volunteer.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import seongjun.volunteer.model.BookMarkData
-import seongjun.volunteer.model.DetailData
+import seongjun.volunteer.model.VolunteerDetailData
 import seongjun.volunteer.repository.Repository
 
 class DetailViewModel: ViewModel() {
 
     val repository = Repository.getInstance()
 
-    var volunteer: MutableLiveData<DetailData?> = MutableLiveData<DetailData?>().apply { value = null }
+    var volunteer: MutableLiveData<VolunteerDetailData?> = MutableLiveData<VolunteerDetailData?>().apply { value = null }
     val bookMarkList: LiveData<List<BookMarkData>> = Repository.getInstance().getBookMarkList()
 
     val isComplete: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }

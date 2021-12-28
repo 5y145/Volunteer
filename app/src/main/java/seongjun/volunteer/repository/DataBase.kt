@@ -7,18 +7,18 @@ import androidx.room.RoomDatabase
 import seongjun.volunteer.model.BookMarkData
 
 @Database(entities = [BookMarkData::class], version = 1, exportSchema = false)
-abstract class AppDataBase: RoomDatabase() {
+abstract class DataBase: RoomDatabase() {
 
     abstract fun getDao(): Dao
 
     companion object {
-        private const val DB_NAME = "db_name"
-        private var instance: AppDataBase? = null
+        private const val DB_NAME = "volunteer"
+        private var instance: DataBase? = null
 
-        fun getInstance(context: Context): AppDataBase { // singleton pattern
+        fun getInstance(context: Context): DataBase { // singleton pattern
             if (instance == null) {
                 synchronized(this){
-                    instance = Room.databaseBuilder(context, AppDataBase::class.java, DB_NAME).build()
+                    instance = Room.databaseBuilder(context, DataBase::class.java, DB_NAME).build()
                 }
             }
             return instance!!

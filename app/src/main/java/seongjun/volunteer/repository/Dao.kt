@@ -13,6 +13,6 @@ interface Dao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addBookMark(bookMarkData: BookMarkData)
 
-    @Query("DELETE FROM bookmark WHERE program_id = :program_id")
-    suspend fun removeBookMark(program_id: Int)
+    @Query("DELETE FROM bookmark WHERE programId = :programId")
+    suspend fun removeBookMark(programId: String)
 }

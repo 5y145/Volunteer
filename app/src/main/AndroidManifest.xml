@@ -14,10 +14,10 @@
         android:theme="@style/Theme.Volunteer"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".DetailActivity"
+            android:name=".activity.DetailActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

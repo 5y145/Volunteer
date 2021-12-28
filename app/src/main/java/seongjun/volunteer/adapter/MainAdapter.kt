@@ -1,18 +1,11 @@
 package seongjun.volunteer.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
-import seongjun.volunteer.ApplicationClass
-import seongjun.volunteer.DetailActivity
 import seongjun.volunteer.databinding.ItemVolunteerBinding
-import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerData
 
 class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {

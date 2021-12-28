@@ -9,18 +9,22 @@ data class BookMarkData(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id: Int,
-    @ColumnInfo(name = "program_id")
-    val program_id: Int, // 프로그램 id
-    @ColumnInfo(name = "program_title")
-    val program_title: String, // 프로그램 제목
-    @ColumnInfo(name = "program_state")
-    val program_state: Int, // 모집 상태
-    @ColumnInfo(name = "startDay")
-    val startDay: Int, // 시작일
-    @ColumnInfo(name = "endDay")
-    val endDay: Int, // 종료일
-    @ColumnInfo(name = "host")
-    val host: String, // 기관
-    @ColumnInfo(name = "url")
-    val url: String, // 주소
+
+    @ColumnInfo(name = "programId") // 봉사 아이디
+    val programId: String,
+
+    @ColumnInfo(name = "title") // 봉사 제목
+    val title: String,
+
+    @ColumnInfo(name = "area") // 지역 명
+    val area: String,
+
+    @ColumnInfo(name = "place") // 봉사 장소
+    val place: String,
+
+    @ColumnInfo(name = "startDay") // 봉사 시작일
+    val startDay: Int,
+
+    @ColumnInfo(name = "endDay") // 봉사 종료일
+    val endDay: Int,
 )

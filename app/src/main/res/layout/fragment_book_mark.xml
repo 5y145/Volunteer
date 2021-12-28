@@ -1,38 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.BookMarkFragment"
     android:id="@+id/bookMarkFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/gray0"
-    tools:context=".fragment.BookMarkFragment">
+    android:background="@color/gray0">
 
     <LinearLayout
+        android:id="@+id/llAppBar"
         android:paddingBottom="4dp"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="bottom"
         android:background="@color/white"
-        android:gravity="bottom">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
-            android:id="@+id/tvFragmentTitle"
+            android:id="@+id/tvTitle"
             android:layout_marginHorizontal="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="북마크"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nanum_bold"
             android:layout_gravity="bottom"
-            android:textSize="20dp"/>
+            android:text="북마크"
+            android:textSize="20dp"
+            android:fontFamily="@font/nanum_bold"
+            android:textColor="@color/black" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"/>
-</LinearLayout>
+    <View
+        android:id="@+id/v"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/gray3"
+        app:layout_constraintTop_toBottomOf="@+id/llAppBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/llContainer"/>
+
+    <LinearLayout
+        android:id="@+id/llContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/v"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_marginHorizontal="4dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:overScrollMode="never"/>
+
+        <LinearLayout
+            android:id="@+id/llNoResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/round_warning_24"/>
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="북마크 정보가 없습니다."
+                android:textSize="14dp"
+                android:fontFamily="@font/nanum_bold"
+                android:textColor="@color/gray5" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

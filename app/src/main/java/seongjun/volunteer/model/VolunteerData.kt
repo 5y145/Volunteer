@@ -1,23 +1,56 @@
 package seongjun.volunteer.model
 
-import java.io.Serializable
+import com.google.gson.annotations.SerializedName
 
 data class VolunteerData(
-    val actBeginTm: Int,
-    val actEndTm: Int,
-    val actPlace: String,
-    val adultPosblAt: String,
-    val gugunCd: String, // 구군 id
-    val nanmmbyNm: String, // 기관
-    val noticeBgnde: String,
-    val noticeEndde: String,
-    val progrmBgnde: String, // 시작일
-    val progrmEndde: String, // 종료일
-    val progrmRegistNo: Int, // 프로그램 id
-    val progrmSj: String, // 프로그램 제목
-    val progrmSttusSe: Int, // 모집 상태
-    val sidoCd: String, // 시도 id
-    val srvcClCode: String,
-    val url: String, // 참여하기
-    val yngbgsPosblAt: String
-): Serializable
+    @SerializedName("progrmRegistNo") // 봉사 아이디
+    val programId: String,
+
+    @SerializedName("srvcClCode") // 봉사 분야
+    val field: String,
+
+    @SerializedName("sidoCd") // 시도 코드
+    val sidoCode: String,
+
+    @SerializedName("gugunCd") // 구군 코드
+    val gugunCode: String,
+
+    @SerializedName("progrmSj") // 봉사 제목
+    val title: String,
+
+    @SerializedName("nanmmbyNm") // 모집 기관
+    val host: String,
+
+    @SerializedName("actPlace") // 봉사 장소
+    val place: String,
+
+    @SerializedName("progrmSttusSe") // 모집 상태
+    val state: Int,
+
+    @SerializedName("noticeBgnde") // 모집 시작일
+    val noticeStartDay: String,
+
+    @SerializedName("noticeEndde") // 모집 종료일
+    val noticeEndDay: String,
+
+    @SerializedName("progrmBgnde") // 봉사 시작일
+    val startDay: Int,
+
+    @SerializedName("progrmEndde") // 봉사 종료일
+    val endDay: Int,
+
+    @SerializedName("actBeginTm") // 봉사 시작시간
+    val startTime: Int,
+
+    @SerializedName("actEndTm") // 봉사 종료시간
+    val endTime: Int,
+
+    @SerializedName("adultPosblAt") // 성인 가능여부 [Y, N]
+    val isAdultPossible: String,
+
+    @SerializedName("yngbgsPosblAt") // 청소년 가능여부 [Y, N]
+    val isYoungPossible: String,
+
+    @SerializedName("url") // 신청 url
+    val url: String
+)
