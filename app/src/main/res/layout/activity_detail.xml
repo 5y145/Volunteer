@@ -52,8 +52,7 @@
         android:background="@color/gray3"
         app:layout_constraintTop_toBottomOf="@+id/llAppBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/llContainer"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <LinearLayout
         android:id="@+id/llContainer"
@@ -62,6 +61,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:background="@color/white"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/v"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -393,7 +393,7 @@
                             android:layout_marginVertical="4dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="성인"
+                            android:text="성인 가능"
                             android:textSize="14dp"
                             android:fontFamily="@font/nanum_bold" />
 
@@ -401,7 +401,7 @@
                             android:id="@+id/tvIsYoungPossible"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="청소년"
+                            android:text="청소년 가능"
                             android:textSize="14dp"
                             android:fontFamily="@font/nanum_bold" />
                     </LinearLayout>

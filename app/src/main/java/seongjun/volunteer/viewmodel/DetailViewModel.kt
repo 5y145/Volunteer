@@ -13,28 +13,28 @@ class DetailViewModel: ViewModel() {
 
     val repository = Repository.getInstance()
 
-    var volunteer: MutableLiveData<VolunteerDetailData?> = MutableLiveData<VolunteerDetailData?>().apply { value = null }
-    val bookMarkList: LiveData<List<BookMarkData>> = Repository.getInstance().getBookMarkList()
+    var volunteerDetailData: VolunteerDetailData? = null
+    private val bookMarkList: LiveData<List<BookMarkData>> = repository.getBookMarkDataList()
 
-    val isComplete: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
+    val isLoading = MutableLiveData<Boolean>().apply { value = false }
 
-    fun loadVolunteer(program_id: Int) {
+    fun getVolunteerDetail(programId: String) {
         viewModelScope.launch {
-
-            volunteer.value = repository.getVolunteer(program_id)
-            isComplete.value = true
+            isLoading.value = true
+            volunteerDetailData = repository.getVolunteerDetail(programId)
+            isLoading.value = false
         }
     }
 
-    fun addBookMark(bookMarkData: BookMarkData) = viewModelScope.launch {
-        repository.addBookMark(bookMarkData)
+    fun addBookMark(item: VolunteerDetailData) = viewModelScope.launch {
+        repository.addBookMark(BookMarkData(0, item.programId, item.title, item.area, item.place, item.startDay, item.endDay))
     }
 
-    fun removeBookMark(program_id: Int) = viewModelScope.launch {
-        repository.removeBookMark(program_id)
+    fun removeBookMark(programId: String) = viewModelScope.launch {
+        repository.removeBookMark(programId)
     }
 
-    fun isBookMark(program_id: Int): Boolean {
-        return bookMarkList.value!!.any { it.program_id == program_id }
+    fun isBookMark(programId: String): Boolean {
+        return bookMarkList.value!!.any { it.programId == programId }
     }
 }

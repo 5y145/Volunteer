@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import seongjun.volunteer.databinding.ItemVolunteerBinding
+import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerData
 
 class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
 
-    private var list: MutableList<VolunteerData> = ArrayList()
-//    private var bookMarkList: List<BookMarkData> = ArrayList()
+    private var list: List<VolunteerData> = ArrayList()
+    private var bookMarkList: List<BookMarkData> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemVolunteerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -36,8 +37,14 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(newList: MutableList<VolunteerData>) {
+    fun setData(newList: List<VolunteerData>) {
         list = newList
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setBookMarkData(newBookMarkList: List<BookMarkData>) {
+        bookMarkList = newBookMarkList
         notifyDataSetChanged()
     }
 
@@ -51,17 +58,17 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
     fun setOnItemClickListener(listener : OnItemClickListener) { this.listener = listener }
 
     inner class Holder(val binding: ItemVolunteerBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(volunteerData: VolunteerData) {
-            binding.tvHost.text = volunteerData.nanmmbyNm
-            when(volunteerData.progrmSttusSe) {
+        fun bind(item: VolunteerData) {
+            binding.tvPlace.text = item.place
+            when(item.state) {
                 1 -> binding.tvState.text = "모집대기"
                 2 -> binding.tvState.text = "모집중"
                 3 -> binding.tvState.text = "모집완료"
             }
-            binding.tvDate.text = getDate(volunteerData.progrmBgnde.toInt(), volunteerData.progrmEndde.toInt())
-            binding.tvTitle.text = volunteerData.progrmSj
-//            if(bookMarkList.any { it.program_id == volunteerData.progrmRegistNo }) binding.ibBookMark.visibility = View.VISIBLE
-//            else binding.ibBookMark.visibility = View.INVISIBLE
+            binding.tvDay.text = getDate(item.startDay, item.endDay)
+            binding.tvTitle.text = item.title
+            if(bookMarkList.any { it.programId == item.programId }) binding.ibBookMark.visibility = View.VISIBLE
+            else binding.ibBookMark.visibility = View.INVISIBLE
         }
 
         private fun getDate(startDate: Int, endDate: Int): String {

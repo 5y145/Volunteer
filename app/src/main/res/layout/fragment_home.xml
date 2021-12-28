@@ -67,8 +67,7 @@
         android:background="@color/gray3"
         app:layout_constraintTop_toBottomOf="@+id/llAppBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/llContainer"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <LinearLayout
         android:id="@+id/llContainer"
