@@ -65,7 +65,7 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
                 2 -> binding.tvState.text = "모집중"
                 3 -> binding.tvState.text = "모집완료"
             }
-            binding.tvDate.text = getDate(volunteerData.progrmBgnde, volunteerData.progrmEndde)
+            binding.tvDate.text = getDate(volunteerData.progrmBgnde.toInt(), volunteerData.progrmEndde.toInt())
             binding.tvTitle.text = volunteerData.progrmSj
 //            if(bookMarkList.any { it.program_id == volunteerData.progrmRegistNo }) binding.ibBookMark.visibility = View.VISIBLE
 //            else binding.ibBookMark.visibility = View.INVISIBLE

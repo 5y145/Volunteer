@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
         mainAdapter = MainAdapter().apply {
             setOnItemClickListener(object: MainAdapter.OnItemClickListener{
                 override fun onItemClick(v: View, item: VolunteerData) { // 화면 이동
-                    startActivity(Intent(mainActivity, DetailActivity::class.java).apply { putExtra("program_id", item.progrmRegistNo) })
+                    startActivity(Intent(mainActivity, DetailActivity::class.java).apply { putExtra("volunteerData", item) })
                 }
             })
         }
@@ -167,7 +167,6 @@ class HomeFragment : Fragment() {
 
     private fun setObserver() {
         viewModel.isComplete.observe(viewLifecycleOwner, {
-//            Log.d("###", "옵저버에서 감지")
             if (viewModel.isComplete.value!!) {
                 viewModel.isComplete.value = false
                 mainAdapter.setData(viewModel.volunteerList.value!!)

@@ -20,8 +20,8 @@ class MainViewModel: ViewModel() {
         repository.addBookMark(bookMarkData)
     }
 
-    fun removeBookMark(bookMarkData: BookMarkData) = viewModelScope.launch {
-        repository.removeBookMark(bookMarkData)
+    fun removeBookMark(program_id: Int) = viewModelScope.launch {
+        repository.removeBookMark(program_id)
     }
 
     // Use Retrofit

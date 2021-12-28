@@ -22,8 +22,8 @@ class Repository(context: Context) {
         dao.addBookMark(bookMarkData)
     }
 
-    suspend fun removeBookMark(bookMarkData: BookMarkData) {
-        dao.removeBookMark(bookMarkData)
+    suspend fun removeBookMark(program_id: Int) {
+        dao.removeBookMark(program_id)
     }
 
     // Use Retrofit

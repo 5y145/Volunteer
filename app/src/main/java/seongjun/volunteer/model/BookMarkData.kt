@@ -21,4 +21,6 @@ data class BookMarkData(
     val endDay: Int, // 종료일
     @ColumnInfo(name = "host")
     val host: String, // 기관
+    @ColumnInfo(name = "url")
+    val url: String, // 주소
 )

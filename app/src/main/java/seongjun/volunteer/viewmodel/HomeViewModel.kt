@@ -12,9 +12,9 @@ class HomeViewModel: ViewModel() {
 
     val repository = Repository.getInstance()
 
-    var volunteerList: MutableLiveData<MutableList<VolunteerData>> = MutableLiveData<MutableList<VolunteerData>>().apply { value = ArrayList() }
+    var volunteerList = MutableLiveData<MutableList<VolunteerData>>().apply { value = ArrayList() }
 
-    val isLoading: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
+    val isLoading = MutableLiveData<Boolean>().apply { value = false }
     val isComplete: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
     val sidoCode: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
     val gugunCode: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
@@ -24,9 +24,7 @@ class HomeViewModel: ViewModel() {
     var isSearching = false
     var searchText = ""
 
-    init {
-        Log.d("###", "뷰모델: 새로생성")
-        loadVolunteerList() }
+    init { loadVolunteerList() }
 
     fun loadVolunteerList() {
         viewModelScope.launch {
