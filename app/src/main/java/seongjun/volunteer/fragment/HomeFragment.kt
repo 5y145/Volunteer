@@ -2,8 +2,8 @@ package seongjun.volunteer.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +18,7 @@ import seongjun.volunteer.activity.MainActivity
 import seongjun.volunteer.viewmodel.MainViewModel
 import seongjun.volunteer.adapter.MainAdapter
 import seongjun.volunteer.databinding.FragmentHomeBinding
+import seongjun.volunteer.dialog.SearchDialog
 import seongjun.volunteer.model.AreaData
 import seongjun.volunteer.model.VolunteerData
 import android.widget.ArrayAdapter as ArrayAdapter1
@@ -52,10 +53,11 @@ class HomeFragment : Fragment() {
 
         volunteerAdapter = MainAdapter().apply {
             setOnItemClickListener(object: MainAdapter.OnItemClickListener{
-                override fun onItemClick(v: View, item: VolunteerData) { // 화면 이동
+                override fun onItemClick(v: View, item: VolunteerData, isBookMark: Boolean) { // 화면 이동
                     startActivity(Intent(mainActivity, DetailActivity::class.java).apply {
                         putExtra("programId", item.programId)
                         putExtra("url", item.url)
+                        putExtra("isBookMark", isBookMark)
                     })
                 }
             })
@@ -67,7 +69,7 @@ class HomeFragment : Fragment() {
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) { // 끝에 도달했는지 확인
                     super.onScrolled(recyclerView, dx, dy)
-                        if ((recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition() == volunteerAdapter.itemCount - 1){
+                        if ((recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition() == volunteerAdapter.itemCount - 5){
                             if (viewModel.isSearching) viewModel.getVolunteerListWithSearch()
                             else viewModel.getVolunteerListWithArea()
                         }
@@ -78,37 +80,35 @@ class HomeFragment : Fragment() {
         binding.snSido.apply {
             adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.sidoName)
             onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) { clickSido(position) }
+                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                    if (position >= 0) clickSido(position)
+                }
                 override fun onNothingSelected(parent: AdapterView<*>) {}
             }
         }
 
         binding.snGugun.apply {
             onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) { clickGugun(position) }
+                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                    if (position >= 0) clickGugun(position)
+                }
                 override fun onNothingSelected(parent: AdapterView<*>) {}
             }
         }
 
-//        binding.etSearch.addTextChangedListener {
-//            if (binding.etSearch.text.toString() != "") binding.ibCancel.visibility = View.VISIBLE else binding.ibCancel.visibility = View.GONE
-//        }
-//
-//        binding.etSearch.setOnKeyListener(object : View.OnKeyListener {
-//            override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
-//                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-//                    viewModel.clickSearch(binding.etSearch.text.toString())
-//                    hideKeyBoard()
-//                    return true
-//                }
-//                return false
-//            }
-//        })
-//
-//        binding.ibCancel.setOnClickListener {
-//            binding.etSearch.setText("")
-//            hideKeyBoard()
-//        }
+        binding.ibSearch.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val dialog = SearchDialog(mainActivity)
+                dialog.showDialog(mainActivity)
+                dialog.setOnClickListener(object : SearchDialog.ButtonClickListener {
+                    override fun onClick(searchText: String, sidoCode: String, gugunCode: String, startDay: String, endDay: String) {
+                        viewModel.clickSearch(searchText, sidoCode, gugunCode, startDay, endDay)
+                        binding.snSido.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.sidoName)
+                        binding.snGugun.visibility = View.GONE
+                    }
+                })
+            }
+        }
     }
 
     private fun setObserver() {
@@ -124,6 +124,10 @@ class HomeFragment : Fragment() {
                 else binding.llNoResult.visibility = View.GONE
                 viewModel.isComplete.postValue(false)
             }
+        })
+
+        viewModel.bookMarkList.observe(viewLifecycleOwner, {
+            volunteerAdapter.setBookMarkData(viewModel.bookMarkList.value!!)
         })
     }
 
@@ -150,10 +154,4 @@ class HomeFragment : Fragment() {
             else -> viewModel.clickGugun("")
         }
     }
-
-//    private fun hideKeyBoard() {
-//        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//        imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
-//        binding.rv.requestFocus()
-//    }
 }

@@ -7,7 +7,7 @@
     android:id="@+id/homeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray0">
+    android:background="@color/gray1">
 
     <LinearLayout
         android:id="@+id/llAppBar"
@@ -35,14 +35,14 @@
         <Spinner
             android:id="@+id/snSido"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_height="28dp"
             android:spinnerMode="dialog"/>
 
         <Spinner
             android:id="@+id/snGugun"
             android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_height="28dp"
             android:spinnerMode="dialog"/>
 
         <LinearLayout
@@ -54,9 +54,10 @@
         <ImageButton
             android:id="@+id/ibSearch"
             android:layout_marginEnd="16dp"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:background="@drawable/sharp_search_24"/>
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/sharp_search_24"
+            android:backgroundTint="@color/black"/>
 
     </LinearLayout>
 
@@ -111,59 +112,17 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/round_warning_24"/>
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/ic_no_result"/>
 
         <TextView
             android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="봉사정보가 없습니다."
+            android:text="No Results Found"
             android:textSize="14dp"
             android:fontFamily="@font/nanum_bold"
             android:textColor="@color/gray5" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:id="@+id/cv"-->
-<!--                    android:layout_margin="4dp"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:cardCornerRadius="10dp"-->
-<!--                    app:cardUseCompatPadding="true">-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:orientation="horizontal">-->
-
-<!--                        <EditText-->
-<!--                            android:id="@+id/etSearch"-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="48dp"-->
-<!--                            android:inputType="text"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:background="@android:color/transparent"-->
-<!--                            android:drawableStart="@drawable/sharp_search_24"-->
-<!--                            android:drawablePadding="8dp"-->
-<!--                            android:maxLines="1"-->
-<!--                            android:gravity="center_vertical"-->
-<!--                            android:paddingStart="8dp"-->
-<!--                            android:paddingEnd="8dp"-->
-<!--                            android:textSize="14sp"-->
-<!--                            android:singleLine="true"/>-->
-
-<!--                        <ImageButton-->
-<!--                            android:id="@+id/ibCancel"-->
-<!--                            android:layout_width="32dp"-->
-<!--                            android:layout_height="32dp"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginHorizontal="16dp"-->
-<!--                            android:background="@null"-->
-<!--                            android:gravity="center"-->
-<!--                            android:src="@drawable/sharp_close_24"-->
-<!--                            android:visibility="gone" />-->
-<!--                    </LinearLayout>-->
-<!--                </androidx.cardview.widget.CardView>-->

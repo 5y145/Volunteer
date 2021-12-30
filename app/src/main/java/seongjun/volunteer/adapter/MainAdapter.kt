@@ -25,7 +25,7 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
         holder.bind(list[position])
 
         holder.itemView.setOnClickListener {
-            listener?.onItemClick(holder.itemView, list[position])
+            listener?.onItemClick(holder.itemView, list[position], isBookMark(list[position].programId))
         }
 
 //        holder.itemView.setOnLongClickListener {
@@ -50,9 +50,21 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
         notifyDataSetChanged()
     }
 
+    fun isBookMark(programId: String): Boolean {
+        var result = false
+        for (item in bookMarkList) {
+            if (item.programId == programId) {
+                Log.d("@@@", "북마크인가요!!!! ${item.programId} : ${programId}")
+                result = true
+                break
+            }
+        }
+        return result
+    }
+
     // ClickListener
     interface OnItemClickListener {
-        fun onItemClick(v: View, item: VolunteerData)
+        fun onItemClick(v: View, item: VolunteerData, isBookMark: Boolean)
 //        fun onItemLongClick(v: View, item: MainData)
     }
 
@@ -69,7 +81,7 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
             }
             binding.tvDay.text = getDate(item.startDay, item.endDay)
             binding.tvTitle.text = item.title
-            if(bookMarkList.any { it.programId == item.programId }) binding.ibBookMark.visibility = View.VISIBLE
+            if (isBookMark(item.programId)) binding.ibBookMark.visibility = View.VISIBLE
             else binding.ibBookMark.visibility = View.INVISIBLE
         }
 

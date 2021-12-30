@@ -49,10 +49,11 @@ class BookMarkFragment : Fragment() {
     private fun setView() {
         volunteerAdapter = BookMarkAdapter().apply {
             setOnItemClickListener(object: BookMarkAdapter.OnItemClickListener{
-                override fun onItemClick(v: View, item: BookMarkData) { // 화면 이동
+                override fun onItemClick(v: View, item: BookMarkData, isBookMark: Boolean) { // 화면 이동
                     startActivity(Intent(mainActivity, DetailActivity::class.java).apply {
                         putExtra("programId", item.programId)
                         putExtra("url", item.url)
+                        putExtra("isBookMark", isBookMark)
                     })
                 }
             })

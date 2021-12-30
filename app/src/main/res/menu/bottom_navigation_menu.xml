@@ -9,11 +9,7 @@
         android:title="BookMark"
         android:icon="@drawable/sharp_bookmark_24"/>
     <item
-        android:id="@+id/reviewFragment"
-        android:title="Review"
-        android:icon="@drawable/sharp_groups_24"/>
-    <item
-        android:id="@+id/settingFragment"
-        android:title="Setting"
-        android:icon="@drawable/sharp_settings_24"/>
+        android:id="@+id/moreFragment"
+        android:title="More"
+        android:icon="@drawable/sharp_more_horiz_24"/>
 </menu>

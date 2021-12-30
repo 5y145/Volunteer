@@ -16,6 +16,7 @@ import seongjun.volunteer.model.VolunteerDetailData
 import seongjun.volunteer.repository.Repository
 import seongjun.volunteer.viewmodel.DetailViewModel
 import seongjun.volunteer.viewmodel.MainViewModel
+import kotlin.properties.Delegates
 
 class DetailActivity : AppCompatActivity() {
 
@@ -24,6 +25,7 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var programId: String
     private lateinit var url: String
+    private var isBookMark by Delegates.notNull<Boolean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,7 @@ class DetailActivity : AppCompatActivity() {
 
         programId = intent.getStringExtra("programId").toString()
         url = intent.getStringExtra("url").toString()
+        isBookMark = intent.getBooleanExtra("isBookMark", false)
         viewModel.getVolunteerDetail(programId)
         setObserver()
     }
@@ -71,8 +74,19 @@ class DetailActivity : AppCompatActivity() {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
         }
 
+        if (isBookMark) binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_24)
+        else binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_border_24)
+
         binding.ibBookMark.setOnClickListener {
-            viewModel.bookMark(item, url)
+            if (isBookMark) {
+                viewModel.removeBookMark(programId)
+                isBookMark = false
+                binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_border_24)
+            } else {
+                viewModel.addBookMark(item, url)
+                isBookMark = true
+                binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_24)
+            }
         }
 
         binding.llContainer.visibility = View.VISIBLE
@@ -82,14 +96,6 @@ class DetailActivity : AppCompatActivity() {
     private fun setObserver() {
         viewModel.isLoading.observe(this, {
             if (!viewModel.isLoading.value!! && viewModel.volunteerDetailData != null) setView(viewModel.volunteerDetailData)
-        })
-
-        viewModel.isBookMark.observe(this, {
-            if (!viewModel.isBookMark.value!!) {
-                binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_border_24)
-            } else {
-                binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_24)
-            }
         })
     }
 

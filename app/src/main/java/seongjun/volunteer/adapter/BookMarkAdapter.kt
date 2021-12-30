@@ -1,10 +1,12 @@
 package seongjun.volunteer.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import seongjun.volunteer.R
 import seongjun.volunteer.databinding.ItemVolunteerBinding
 import seongjun.volunteer.model.BookMarkData
 
@@ -22,7 +24,7 @@ class BookMarkAdapter: RecyclerView.Adapter<BookMarkAdapter.Holder>() {
         holder.bind(list[position])
 
         holder.itemView.setOnClickListener {
-            listener?.onItemClick(holder.itemView, list[position])
+            listener?.onItemClick(holder.itemView, list[position], true)
         }
 
 //        holder.itemView.setOnLongClickListener {
@@ -41,9 +43,22 @@ class BookMarkAdapter: RecyclerView.Adapter<BookMarkAdapter.Holder>() {
         notifyDataSetChanged()
     }
 
+    fun isBookMark(programId: String): Boolean {
+        var result = false
+        for (item in list) {
+            Log.d("@@@", "북마크인가요? ${item.programId} : ${programId}")
+            if (item.programId == programId) {
+                Log.d("@@@", "북마크인가요!!!!!!!!!!! ${item.programId} : ${programId}")
+                result = true
+                break
+            }
+        }
+        return result
+    }
+
     // ClickListener
     interface OnItemClickListener {
-        fun onItemClick(v: View, item: BookMarkData)
+        fun onItemClick(v: View, item: BookMarkData, isBookMark: Boolean)
 //        fun onItemLongClick(v: View, item: MainData)
     }
 
@@ -60,6 +75,8 @@ class BookMarkAdapter: RecyclerView.Adapter<BookMarkAdapter.Holder>() {
             }
             binding.tvDay.text = getDate(item.startDay, item.endDay)
             binding.tvTitle.text = item.title
+            if (isBookMark(item.programId)) binding.ibBookMark.visibility = View.VISIBLE
+            else binding.ibBookMark.visibility = View.INVISIBLE
         }
 
         private fun getDate(startDate: Int, endDate: Int): String {

@@ -22,6 +22,8 @@ class MainViewModel: ViewModel() {
     var pageNumber = 1
     var isEnd = false
     var searchText = ""
+    var startDay = ""
+    var endDay = ""
 
     // List
     var volunteerList = MutableLiveData<MutableList<VolunteerData>>().apply { value = ArrayList() }
@@ -54,7 +56,7 @@ class MainViewModel: ViewModel() {
         viewModelScope.launch {
             if (!isLoading.value!! && !isEnd) {
                 isLoading.value = true
-                val result = repository.getVolunteerList(searchText, pageNumber)
+                val result = repository.getVolunteerList(searchText, sidoCode, gugunCode, startDay, endDay, pageNumber)
                 if (result.isEmpty()) isEnd = true
                 else {
                     volunteerList.value!!.addAll(result)
@@ -98,13 +100,16 @@ class MainViewModel: ViewModel() {
         getVolunteerListWithArea()
     }
 
-    fun clickSearch(text: String) {
+    fun clickSearch(searchText: String, sidoCode: String, gugunCode: String, startDay: String, endDay: String) {
         isSearching = true
-        sidoCode = ""
-        gugunCode = ""
+        this.searchText= searchText
+        this.sidoCode = sidoCode
+        this.gugunCode = gugunCode
+        this.startDay = startDay
+        this.endDay = endDay
+
         pageNumber = 1
         isEnd = false
-        searchText= text
         volunteerList.value!!.clear()
         getVolunteerListWithSearch()
     }

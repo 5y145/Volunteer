@@ -32,6 +32,7 @@
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_favorite_border_24.xml" value="0.38153846153846155" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_groups_24.xml" value="0.38153846153846155" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_home_24.xml" value="0.38153846153846155" />
+        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_more_horiz_24.xml" value="0.3875" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_more_vert_24.xml" value="0.275" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_room_24.xml" value="0.38153846153846155" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_search_24.xml" value="0.38153846153846155" />
@@ -41,8 +42,10 @@
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/activity_detail.xml" value="0.33" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/card_view_round.xml" value="0.33" />
+        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/dialog_search.xml" value="0.37135416666666665" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_book_mark.xml" value="0.33" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_home.xml" value="0.32083333333333336" />
+        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_more.xml" value="0.37135416666666665" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_review.xml" value="0.33" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_setting.xml" value="0.37135416666666665" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/item_home.xml" value="0.5" />

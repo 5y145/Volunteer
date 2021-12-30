@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/moreFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/gray1"
+    tools:context=".fragment.MoreFragment">
+
+    <LinearLayout
+        android:id="@+id/llAppBar"
+        android:paddingBottom="4dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_marginHorizontal="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="더보기"
+            android:textSize="20dp"
+            android:fontFamily="@font/nanum_bold"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/gray3"
+        app:layout_constraintTop_toBottomOf="@+id/llAppBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/llContainer"/>
+
+    <ScrollView
+        android:id="@+id/llContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="top"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@+id/v"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:paddingVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="Q &amp; A"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="Q. 봉사 신청을 앱에서 바로 할 수 없나요?"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="개발자는 권한이 없기 때문에 홈페이지에서만 신청하실 수 있습니다."
+                    android:textSize="12dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/gray7"/>
+
+                <TextView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="Q. 북마크 추가는 어떻게 하나요?"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="세부정보 화면에서 주황색 아이콘을 누르시면 추가할 수 있습니다."
+                    android:textSize="12dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/gray7"/>
+
+                <TextView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="Q. 앱에 대한 건의사항이 있어요!"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="메일로 알려주시면 다음 업데이트에 반영하도록 하겠습니다."
+                    android:textSize="12dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/gray7"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray3"/>
+
+            <LinearLayout
+                android:paddingVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="Version"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="1.0"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/gray5"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray3"/>
+
+            <LinearLayout
+                android:paddingVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="Developer Mail"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="5y145@naver.com"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/gray5"
+                    android:textIsSelectable="true"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray3"/>
+
+            <LinearLayout
+                android:paddingVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="Open Api"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="행정안전부_봉사참여정보서비스"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="https://www.data.go.kr/data/15000221/openapi.do"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/gray5"
+                    android:textIsSelectable="true"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="행정안전부_코드조회서비스"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="https://www.data.go.kr/data/15000090/openapi.do"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="@color/gray5"
+                    android:textIsSelectable="true"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

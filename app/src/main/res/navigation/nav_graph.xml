@@ -18,14 +18,8 @@
         tools:layout="@layout/fragment_book_mark" />
 
     <fragment
-        android:id="@+id/reviewFragment"
-        android:name="seongjun.volunteer.fragment.ReviewFragment"
-        android:label="fragment_review"
-        tools:layout="@layout/fragment_review" />
-
-    <fragment
-        android:id="@+id/settingFragment"
-        android:name="seongjun.volunteer.fragment.SettingFragment"
-        android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
+        android:id="@+id/moreFragment"
+        android:name="seongjun.volunteer.fragment.MoreFragment"
+        android:label="fragment_more"
+        tools:layout="@layout/fragment_more" />
 </navigation>
