@@ -1,7 +1,9 @@
 package seongjun.volunteer.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
+import seongjun.volunteer.ApplicationClass
 import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerDetailData
 import seongjun.volunteer.model.VolunteerData
@@ -9,9 +11,10 @@ import seongjun.volunteer.repository.Repository
 
 class MainViewModel: ViewModel() {
 
-    val repository = Repository.getInstance()
+    val repository = ApplicationClass.repository
 
     // Home Fragment
+    val isComplete = MutableLiveData<Boolean>().apply { value = false }
     val isLoading = MutableLiveData<Boolean>().apply { value = false }
     var isSearching = false
     var sidoCode = ""
@@ -22,19 +25,10 @@ class MainViewModel: ViewModel() {
 
     // List
     var volunteerList = MutableLiveData<MutableList<VolunteerData>>().apply { value = ArrayList() }
-    val bookMarkList: LiveData<List<BookMarkData>> = repository.getBookMarkDataList()
+    val bookMarkList = repository.getBookMarkDataList()
 
     init {
         getVolunteerListWithArea()
-    }
-
-    // Use Room
-    fun addBookMark(item: VolunteerDetailData) = viewModelScope.launch {
-        repository.addBookMark(BookMarkData(0, item.programId, item.title, item.area, item.place, item.startDay, item.endDay))
-    }
-
-    fun removeBookMark(programId: String) = viewModelScope.launch {
-        repository.removeBookMark(programId)
     }
 
     // Use Retrofit
@@ -43,11 +37,14 @@ class MainViewModel: ViewModel() {
             if (!isLoading.value!! && !isEnd) {
                 isLoading.value = true
                 val result = repository.getVolunteerList(sidoCode, gugunCode, pageNumber)
-                if (result.isEmpty()) isEnd = true
+                if (result.isEmpty()) {
+                    isEnd = true
+                }
                 else {
                     volunteerList.value!!.addAll(result)
                     pageNumber++
                 }
+                isComplete.postValue(true)
                 isLoading.value = false
             }
         }
@@ -63,8 +60,21 @@ class MainViewModel: ViewModel() {
                     volunteerList.value!!.addAll(result)
                     pageNumber++
                 }
+                isComplete.postValue(true)
                 isLoading.value = false
             }
+        }
+    }
+
+    fun addBookMark(item: VolunteerDetailData, url: String) {
+        viewModelScope.launch {
+            repository.addBookMark(BookMarkData(item.programId, item.title, item.host, item.state, item.startDay, item.endDay, url))
+        }
+    }
+
+    fun removeBookMark(programId: String) {
+        viewModelScope.launch {
+            repository.removeBookMark(programId)
         }
     }
 
@@ -97,9 +107,5 @@ class MainViewModel: ViewModel() {
         searchText= text
         volunteerList.value!!.clear()
         getVolunteerListWithSearch()
-    }
-
-    fun isBookMark(programId: String): Boolean {
-        return bookMarkList.value!!.any{ it.programId == programId}
     }
 }

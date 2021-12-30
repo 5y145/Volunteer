@@ -1,20 +1,17 @@
 package seongjun.volunteer.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import seongjun.volunteer.R
 import seongjun.volunteer.databinding.ItemVolunteerBinding
 import seongjun.volunteer.model.BookMarkData
-import seongjun.volunteer.model.VolunteerData
 
-class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
 
-    private var list: MutableList<VolunteerData> = ArrayList()
-    private var bookMarkList: List<BookMarkData> = ArrayList()
+class BookMarkAdapter: RecyclerView.Adapter<BookMarkAdapter.Holder>() {
+
+    private var list: List<BookMarkData> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemVolunteerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -39,20 +36,14 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(newList: MutableList<VolunteerData>) {
+    fun setData(newList: List<BookMarkData>) {
         list = newList
-        notifyDataSetChanged()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setBookMarkData(newBookMarkList: List<BookMarkData>) {
-        bookMarkList = newBookMarkList
         notifyDataSetChanged()
     }
 
     // ClickListener
     interface OnItemClickListener {
-        fun onItemClick(v: View, item: VolunteerData)
+        fun onItemClick(v: View, item: BookMarkData)
 //        fun onItemLongClick(v: View, item: MainData)
     }
 
@@ -60,7 +51,7 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
     fun setOnItemClickListener(listener : OnItemClickListener) { this.listener = listener }
 
     inner class Holder(private val binding: ItemVolunteerBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: VolunteerData) {
+        fun bind(item: BookMarkData) {
             binding.tvHost.text = item.host
             when(item.state) {
                 1 -> binding.tvState.text = "모집대기"
@@ -69,8 +60,6 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
             }
             binding.tvDay.text = getDate(item.startDay, item.endDay)
             binding.tvTitle.text = item.title
-            if(bookMarkList.any { it.programId == item.programId }) binding.ibBookMark.visibility = View.VISIBLE
-            else binding.ibBookMark.visibility = View.INVISIBLE
         }
 
         private fun getDate(startDate: Int, endDate: Int): String {

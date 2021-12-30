@@ -7,12 +7,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import seongjun.volunteer.R
 import seongjun.volunteer.databinding.ActivityDetailBinding
-import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerDetailData
+import seongjun.volunteer.repository.Repository
 import seongjun.volunteer.viewmodel.DetailViewModel
+import seongjun.volunteer.viewmodel.MainViewModel
 
 class DetailActivity : AppCompatActivity() {
 
@@ -69,13 +72,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         binding.ibBookMark.setOnClickListener {
-            if (viewModel.isBookMark(programId)) {
-                viewModel.removeBookMark(item.programId)
-                binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_border_24)
-            } else {
-                viewModel.addBookMark(item)
-                binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_24)
-            }
+            viewModel.bookMark(item, url)
         }
 
         binding.llContainer.visibility = View.VISIBLE
@@ -85,6 +82,14 @@ class DetailActivity : AppCompatActivity() {
     private fun setObserver() {
         viewModel.isLoading.observe(this, {
             if (!viewModel.isLoading.value!! && viewModel.volunteerDetailData != null) setView(viewModel.volunteerDetailData)
+        })
+
+        viewModel.isBookMark.observe(this, {
+            if (!viewModel.isBookMark.value!!) {
+                binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_border_24)
+            } else {
+                binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_24)
+            }
         })
     }
 

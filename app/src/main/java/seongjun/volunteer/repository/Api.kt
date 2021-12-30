@@ -6,10 +6,10 @@ import seongjun.volunteer.model.*
 
 interface Api {
     @GET("volunteer_list")
-    suspend fun getVolunteerList(@Query("schSido")sidoCode: String, @Query("schSign1")gugunCode: String, @Query("pageNo")pageNumber: Int) : Response<List<VolunteerData>>
+    suspend fun getVolunteerList(@Query("schSido")sidoCode: String, @Query("schSign1")gugunCode: String, @Query("pageNo")pageNumber: Int) : Response<MutableList<VolunteerData>>
 
     @GET("volunteer_list")
-    suspend fun getVolunteerList(@Query("keyword")keyWord: String, @Query("pageNo")pageNumber: Int) : Response<List<VolunteerData>>
+    suspend fun getVolunteerList(@Query("keyword")keyWord: String, @Query("pageNo")pageNumber: Int) : Response<MutableList<VolunteerData>>
 
     @GET("volunteer_item")
     suspend fun getVolunteerDetail(@Query("progrmRegistNo")programId: String) : Response<VolunteerDetailData>
