@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import seongjun.volunteer.activity.DetailActivity
 import seongjun.volunteer.activity.MainActivity
 import seongjun.volunteer.viewmodel.MainViewModel
-import seongjun.volunteer.adapter.MainAdapter
+import seongjun.volunteer.adapter.HomeAdapter
 import seongjun.volunteer.databinding.FragmentHomeBinding
 import seongjun.volunteer.dialog.SearchDialog
 import seongjun.volunteer.model.AreaData
@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
 
     private lateinit var mainActivity: MainActivity
-    private lateinit var volunteerAdapter: MainAdapter
+    private lateinit var volunteerAdapter: HomeAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -48,11 +48,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun setView() {
-//        binding.viewModel = viewModel
-//        binding.lifecycleOwner = viewLifecycleOwner
-
-        volunteerAdapter = MainAdapter().apply {
-            setOnItemClickListener(object: MainAdapter.OnItemClickListener{
+        volunteerAdapter = HomeAdapter().apply {
+            setOnItemClickListener(object: HomeAdapter.OnItemClickListener{
                 override fun onItemClick(v: View, item: VolunteerData, isBookMark: Boolean) { // 화면 이동
                     startActivity(Intent(mainActivity, DetailActivity::class.java).apply {
                         putExtra("programId", item.programId)

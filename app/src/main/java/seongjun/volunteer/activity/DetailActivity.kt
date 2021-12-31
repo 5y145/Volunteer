@@ -1,5 +1,6 @@
 package seongjun.volunteer.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -38,6 +39,7 @@ class DetailActivity : AppCompatActivity() {
         setObserver()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setView(item: VolunteerDetailData?) {
         if (item == null) return
 
@@ -60,20 +62,21 @@ class DetailActivity : AppCompatActivity() {
 
         binding.tvContents.text = item.contents // 봉사 내용
 
-        binding.tvNoticeDay.text = getNoticeDay(item.noticeStartDay, item.noticeEndDay) // 모집 기간
-        binding.tvDay.text = getDay(item.startDay, item.endDay) // 활동 기간
-        binding.tvTime.text = getTime(item.startTime, item.endTime) // 활동 시간
-        binding.tvIsAdultPossible.visibility = if (item.isAdultPossible == "Y") View.VISIBLE else View.GONE
-        binding.tvIsYoungPossible.visibility = if (item.isYoungPossible == "Y") View.VISIBLE else View.GONE
+        binding.tvNoticeDay.text = viewModel.getNoticeDay(item.noticeStartDay, item.noticeEndDay) // 모집 기간
+        binding.tvDay.text = viewModel.getDay(item.startDay, item.endDay) // 활동 기간
+        binding.tvTime.text = viewModel.getTime(item.startTime, item.endTime) // 활동 시간
+        binding.tvIsAdultPossible.visibility = if (item.isAdultPossible == "Y") View.VISIBLE else View.GONE // 성인 가능여부
+        binding.tvIsYoungPossible.visibility = if (item.isYoungPossible == "Y") View.VISIBLE else View.GONE // 청소년 가능여부
 
         binding.tvManager.text = item.manager// 담당자
         binding.tvPhoneNumber.text = item.phoneNumber // 전화번호
         binding.tvEmail.text = if (item.email == "null" || item.email == "@") "" else item.email // 이메일
 
-        binding.btnUrl.setOnClickListener {
+        binding.btnUrl.setOnClickListener { // 신청 url
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
         }
 
+        // 북마크
         if (isBookMark) binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_24)
         else binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_border_24)
 
@@ -89,6 +92,7 @@ class DetailActivity : AppCompatActivity() {
             }
         }
 
+        // 화면에 표시
         binding.llContainer.visibility = View.VISIBLE
         binding.pb.visibility = View.GONE
     }
@@ -97,18 +101,5 @@ class DetailActivity : AppCompatActivity() {
         viewModel.isLoading.observe(this, {
             if (!viewModel.isLoading.value!! && viewModel.volunteerDetailData != null) setView(viewModel.volunteerDetailData)
         })
-    }
-
-    private fun getNoticeDay(start: String, end: String): String {
-        return if(end.toIntOrNull() == null) "${start.toInt() % 10000 / 100}/${start.toInt() % 100} ~ 마감시"
-        else "${start.toInt() % 10000 / 100}/${start.toInt() % 100} ~ ${end.toInt() % 10000 / 100}/${end.toInt() % 100}"
-    }
-
-    private fun getDay(start: Int, end: Int): String {
-        return "${start % 10000 / 100}/${start % 100} ~ ${end % 10000 / 100}/${end % 100}"
-    }
-
-    private fun getTime(start: Int, end: Int): String {
-        return "$start ~ $end"
     }
 }

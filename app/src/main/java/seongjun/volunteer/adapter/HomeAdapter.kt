@@ -1,17 +1,15 @@
 package seongjun.volunteer.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import seongjun.volunteer.R
 import seongjun.volunteer.databinding.ItemVolunteerBinding
 import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerData
 
-class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
+class HomeAdapter: RecyclerView.Adapter<HomeAdapter.Holder>() {
 
     private var list: MutableList<VolunteerData> = ArrayList()
     private var bookMarkList: List<BookMarkData> = ArrayList()
@@ -23,15 +21,9 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(list[position])
-
         holder.itemView.setOnClickListener {
             listener?.onItemClick(holder.itemView, list[position], isBookMark(list[position].programId))
         }
-
-//        holder.itemView.setOnLongClickListener {
-//            listener?.onItemLongClick(holder.itemView, list[position])
-//            return@setOnLongClickListener false
-//        }
     }
 
     override fun getItemCount(): Int {
@@ -54,7 +46,6 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
         var result = false
         for (item in bookMarkList) {
             if (item.programId == programId) {
-                Log.d("@@@", "북마크인가요!!!! ${item.programId} : ${programId}")
                 result = true
                 break
             }
@@ -65,7 +56,6 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.Holder>() {
     // ClickListener
     interface OnItemClickListener {
         fun onItemClick(v: View, item: VolunteerData, isBookMark: Boolean)
-//        fun onItemLongClick(v: View, item: MainData)
     }
 
     private var listener : OnItemClickListener? = null

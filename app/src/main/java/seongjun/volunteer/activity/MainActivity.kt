@@ -1,9 +1,7 @@
 package seongjun.volunteer.activity
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -27,10 +25,4 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomNav, navController)
     }
-
-//    private fun hideKeyBoard() {
-//        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//        imm.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
-//        binding.rv.requestFocus()
-//    }
 }

@@ -10,17 +10,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import seongjun.volunteer.ApplicationClass
-import seongjun.volunteer.R
 import seongjun.volunteer.activity.DetailActivity
 import seongjun.volunteer.activity.MainActivity
 import seongjun.volunteer.adapter.BookMarkAdapter
-import seongjun.volunteer.adapter.MainAdapter
 import seongjun.volunteer.databinding.FragmentBookMarkBinding
-import seongjun.volunteer.databinding.FragmentHomeBinding
 import seongjun.volunteer.model.BookMarkData
-import seongjun.volunteer.model.VolunteerData
 import seongjun.volunteer.viewmodel.MainViewModel
 
 class BookMarkFragment : Fragment() {

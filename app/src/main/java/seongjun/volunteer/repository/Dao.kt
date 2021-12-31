@@ -1,7 +1,6 @@
 package seongjun.volunteer.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import androidx.room.Dao
 import seongjun.volunteer.model.BookMarkData

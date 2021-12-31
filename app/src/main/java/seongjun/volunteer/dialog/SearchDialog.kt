@@ -15,7 +15,6 @@ import androidx.core.widget.addTextChangedListener
 import seongjun.volunteer.R
 import seongjun.volunteer.model.AreaData
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 

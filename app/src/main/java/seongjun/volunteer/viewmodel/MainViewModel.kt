@@ -1,17 +1,13 @@
 package seongjun.volunteer.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
-import seongjun.volunteer.ApplicationClass
-import seongjun.volunteer.model.BookMarkData
-import seongjun.volunteer.model.VolunteerDetailData
 import seongjun.volunteer.model.VolunteerData
 import seongjun.volunteer.repository.Repository
 
 class MainViewModel: ViewModel() {
 
-    val repository = ApplicationClass.repository
+    val repository = Repository.getInstance()
 
     // Home Fragment
     val isComplete = MutableLiveData<Boolean>().apply { value = false }
@@ -68,18 +64,6 @@ class MainViewModel: ViewModel() {
         }
     }
 
-    fun addBookMark(item: VolunteerDetailData, url: String) {
-        viewModelScope.launch {
-            repository.addBookMark(BookMarkData(item.programId, item.title, item.host, item.state, item.startDay, item.endDay, url))
-        }
-    }
-
-    fun removeBookMark(programId: String) {
-        viewModelScope.launch {
-            repository.removeBookMark(programId)
-        }
-    }
-
     // Home Fragment
     fun clickSido(code: String) {
         isSearching = false
@@ -107,7 +91,6 @@ class MainViewModel: ViewModel() {
         this.gugunCode = gugunCode
         this.startDay = startDay
         this.endDay = endDay
-
         pageNumber = 1
         isEnd = false
         volunteerList.value!!.clear()

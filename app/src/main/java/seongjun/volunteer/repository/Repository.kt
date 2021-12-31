@@ -1,11 +1,8 @@
 package seongjun.volunteer.repository
 
 import android.app.Application
-import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerDetailData
 import seongjun.volunteer.model.VolunteerData
@@ -43,7 +40,6 @@ class Repository(application : Application) {
     }
 
     suspend fun getVolunteerList(searchText: String, sidoCode: String, gugunCode: String, startDay: String, endDay: String, pageNumber: Int): MutableList<VolunteerData> {
-        Log.d("@@@", "검색 요청보냄 '${searchText}' '${sidoCode}' '${gugunCode}' ${startDay} ${endDay} ${pageNumber}")
         val response = RetrofitInstance.API.getVolunteerList(searchText, sidoCode, gugunCode, startDay, endDay, pageNumber)
         return if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
     }
@@ -55,6 +51,7 @@ class Repository(application : Application) {
 
     companion object {
         private var instance: Repository? = null
+        fun getInstance(): Repository { return instance as Repository }
         fun getInstance(application : Application): Repository {
             if (instance == null) instance = Repository(application)
             return instance as Repository

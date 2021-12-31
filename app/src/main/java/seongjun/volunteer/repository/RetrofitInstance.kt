@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-    const val SERVER_URL = "http://seongjunjang.cafe24app.com/volunteer/"
+    private const val SERVER_URL = "http://seongjunjang.cafe24app.com/volunteer/"
     private val retrofit by lazy {
         Retrofit
             .Builder()

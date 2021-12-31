@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import seongjun.volunteer.model.BookMarkData
 
-@Database(entities = [BookMarkData::class], version = 5, exportSchema = false)
+@Database(entities = [BookMarkData::class], version = 1, exportSchema = false)
 abstract class DataBase: RoomDatabase() {
 
     abstract fun getDao(): Dao
