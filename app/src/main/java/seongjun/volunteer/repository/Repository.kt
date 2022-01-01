@@ -31,7 +31,8 @@ class Repository(application : Application) {
     suspend fun getVolunteerList(sidoCode: String, gugunCode: String, pageNumber: Int): MutableList<VolunteerData> {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val nextDay = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
-            val response = RetrofitInstance.API.getVolunteerList(sidoCode, gugunCode, nextDay, nextDay, pageNumber)
+            val nextWeek = LocalDate.now().plusDays(8).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+            val response = RetrofitInstance.API.getVolunteerList(sidoCode, gugunCode, nextDay, nextWeek, pageNumber)
             if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
         } else {
             val response = RetrofitInstance.API.getVolunteerList(sidoCode, gugunCode, pageNumber)
