@@ -4,6 +4,7 @@
 
 # 1365 Volunteer
 1365 봉사 정보를 편리하게 조회할 수 있는 앱입니다.
+ 
 플레이스토어에서 다운로드 받을 수 있습니다.
 
 <p>
@@ -11,7 +12,7 @@
 <img src="https://img.shields.io/badge/Kotlin-3178C6?style=flat-square&logo=Kotlin&logoColor=white"/>
 </p>
 
-<img src="https://user-images.githubusercontent.com/95672282/147848163-4f78f339-5978-4d08-895f-b8c0bd8d030e.gif" width="25%" height="25%">
+<img src="https://user-images.githubusercontent.com/95672282/147849926-6dffc08f-c547-4555-9fe3-42a78884b786.gif" width="25%" height="25%">
 
 </div>
 
