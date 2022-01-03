@@ -42,6 +42,7 @@
  - `ViewModel`
  - `LiveData`
  - `Room`
+ - `Navigation`
  - `Retrofit`
  - `Coroutine`
  - `Open Api`
