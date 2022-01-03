@@ -32,7 +32,7 @@
  - 행정안전부 코드조회 서비스
 ```
 
-# 🛠 Used Tech
+# 🛠 Tech
 
  - `Kotlin`
  - `JetPack`
@@ -50,3 +50,11 @@
 # 🏭 Architecture
 
 - `MVVM Repository`
+
+# BackEnd
+
+- `Node.js`
+
+# Hosting
+
+- `Cafe24`
