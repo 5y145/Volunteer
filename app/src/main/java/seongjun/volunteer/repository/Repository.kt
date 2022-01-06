@@ -1,13 +1,11 @@
 package seongjun.volunteer.repository
 
 import android.app.Application
-import android.os.Build
+import android.util.Log
 import androidx.lifecycle.LiveData
 import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerDetailData
 import seongjun.volunteer.model.VolunteerData
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class Repository(application : Application) {
 
@@ -28,20 +26,15 @@ class Repository(application : Application) {
     }
 
     // Use Retrofit
-    suspend fun getVolunteerList(sidoCode: String, gugunCode: String, pageNumber: Int): MutableList<VolunteerData> {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val nextDay = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
-            val nextWeek = LocalDate.now().plusDays(8).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
-            val response = RetrofitInstance.API.getVolunteerList(sidoCode, gugunCode, nextDay, nextWeek, pageNumber)
-            if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
-        } else {
-            val response = RetrofitInstance.API.getVolunteerList(sidoCode, gugunCode, pageNumber)
-            if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
-        }
+    suspend fun getVolunteerList(startDay: String, endDay: String, sidoCode: String, gugunCode: String, pageNumber: Int): MutableList<VolunteerData> {
+        Log.d("###", "요청: ${startDay} ${endDay} ${sidoCode} ${gugunCode} ${pageNumber}")
+        val response = RetrofitInstance.API.getVolunteerList(startDay, endDay, sidoCode, gugunCode, pageNumber)
+        return if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
     }
 
-    suspend fun getVolunteerList(searchText: String, sidoCode: String, gugunCode: String, startDay: String, endDay: String, pageNumber: Int): MutableList<VolunteerData> {
-        val response = RetrofitInstance.API.getVolunteerList(searchText, sidoCode, gugunCode, startDay, endDay, pageNumber)
+    suspend fun getVolunteerListWithText(startDay: String, endDay: String, searchText: String, sidoCode: String, gugunCode: String, pageNumber: Int): MutableList<VolunteerData> {
+        Log.d("###", "검색어 요청: ${startDay} ${endDay} ${searchText} ${sidoCode} ${gugunCode} ${pageNumber}")
+        val response = RetrofitInstance.API.getVolunteerListWithText(startDay, endDay, searchText, sidoCode, pageNumber)
         return if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
     }
 

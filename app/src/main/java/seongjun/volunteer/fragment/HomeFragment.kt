@@ -2,7 +2,6 @@ package seongjun.volunteer.fragment
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -66,9 +65,8 @@ class HomeFragment : Fragment() {
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) { // 끝에 도달했는지 확인
                     super.onScrolled(recyclerView, dx, dy)
-                        if ((recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition() == volunteerAdapter.itemCount - 5){
-                            if (viewModel.isSearching) viewModel.getVolunteerListWithSearch()
-                            else viewModel.getVolunteerListWithArea()
+                        if ((recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition() == volunteerAdapter.itemCount - 10){
+                            if (volunteerAdapter.itemCount > 39) viewModel.getVolunteerList()
                         }
                 }
             })
@@ -94,17 +92,13 @@ class HomeFragment : Fragment() {
         }
 
         binding.ibSearch.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val dialog = SearchDialog(mainActivity)
-                dialog.showDialog(mainActivity)
-                dialog.setOnClickListener(object : SearchDialog.ButtonClickListener {
-                    override fun onClick(searchText: String, sidoCode: String, gugunCode: String, startDay: String, endDay: String) {
-                        viewModel.clickSearch(searchText, sidoCode, gugunCode, startDay, endDay)
-                        binding.snSido.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.sidoName)
-                        binding.snGugun.visibility = View.GONE
-                    }
-                })
-            }
+            val dialog = SearchDialog(mainActivity)
+            dialog.showDialog(mainActivity)
+            dialog.setOnClickListener(object : SearchDialog.ButtonClickListener {
+                override fun onClick(searchText: String, sidoCode: String, gugunCode: String, startDay: String, endDay: String) {
+                    clickSearch(searchText, sidoCode, gugunCode, startDay, endDay)
+                }
+            })
         }
     }
 
@@ -116,9 +110,14 @@ class HomeFragment : Fragment() {
 
         viewModel.isComplete.observe(viewLifecycleOwner, {
             if (viewModel.isComplete.value!!) {
+                if (viewModel.volunteerList.value!!.size > 0) {
+                    binding.container.visibility = View.VISIBLE
+                    binding.noResult.visibility = View.GONE
+                } else {
+                    binding.container.visibility = View.GONE
+                    binding.noResult.visibility = View.VISIBLE
+                }
                 volunteerAdapter.setData(viewModel.volunteerList.value!!)
-                if (viewModel.volunteerList.value!!.size == 0) binding.noResult.visibility = View.VISIBLE
-                else binding.noResult.visibility = View.GONE
                 viewModel.isComplete.postValue(false)
             }
         })
@@ -129,8 +128,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun clickSido(position: Int) {
-        viewModel.clickSido(AreaData.sidoCode[position])
-
+        binding.container.visibility = View.GONE
         when(AreaData.sidoCode[position]) {
             "6110000" -> { // 서울
                 binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.seoulName)
@@ -142,13 +140,22 @@ class HomeFragment : Fragment() {
             }
             else -> { binding.snGugun.visibility = View.GONE }
         }
+        viewModel.clickSido(AreaData.sidoCode[position])
     }
 
     private fun clickGugun(position: Int) {
+        binding.container.visibility = View.GONE
         when(viewModel.sidoCode) {
             "6110000" -> viewModel.clickGugun(AreaData.seoulCode[position])
             "6410000" -> viewModel.clickGugun(AreaData.gyeonggiCode[position])
             else -> viewModel.clickGugun("")
         }
+    }
+
+    private fun clickSearch(searchText: String, sidoCode: String, gugunCode: String, startDay: String, endDay: String) {
+        binding.container.visibility = View.GONE
+        binding.snSido.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.sidoName)
+        binding.snGugun.visibility = View.GONE
+        viewModel.clickSearch(searchText, sidoCode, gugunCode, startDay, endDay)
     }
 }

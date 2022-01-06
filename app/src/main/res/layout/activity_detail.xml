@@ -185,14 +185,13 @@
                 app:cardUseCompatPadding="true">
 
                 <LinearLayout
-                    android:paddingVertical="@dimen/small_margin"
+                    android:padding="@dimen/medium_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tvContents"
-                        android:layout_margin="@dimen/small_margin"
                         style="@style/medium_dark_text"
                         android:text="봉사 내용" />
                 </LinearLayout>
@@ -207,7 +206,7 @@
                 app:cardUseCompatPadding="true">
 
                 <LinearLayout
-                    android:paddingVertical="8dp"
+                    android:paddingVertical="@dimen/medium_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -234,7 +233,7 @@
                         <TextView
                             android:id="@+id/tvNoticeDay"
                             android:layout_marginTop="4dp"
-                            style="@style/medium_dark_text"
+                            style="@style/small_dark_text"
                             android:text="모집 기간"
                             android:textColor="@color/skyBlue"/>
                     </LinearLayout>
@@ -259,7 +258,7 @@
                         <TextView
                             android:id="@+id/tvDay"
                             android:layout_marginTop="4dp"
-                            style="@style/medium_dark_text"
+                            style="@style/small_dark_text"
                             android:text="봉사 기간"
                             android:textColor="@color/skyBlue"/>
                     </LinearLayout>
@@ -284,7 +283,7 @@
                         <TextView
                             android:id="@+id/tvTime"
                             android:layout_marginTop="4dp"
-                            style="@style/medium_dark_text"
+                            style="@style/small_dark_text"
                             android:text="봉사 시간"
                             android:textColor="@color/skyBlue"/>
                     </LinearLayout>
@@ -305,13 +304,13 @@
                         <TextView
                             android:id="@+id/tvIsAdultPossible"
                             android:layout_marginTop="4dp"
-                            style="@style/medium_dark_text"
+                            style="@style/small_dark_text"
                             android:text="성인 가능" />
 
                         <TextView
                             android:id="@+id/tvIsYoungPossible"
                             android:layout_marginTop="4dp"
-                            style="@style/medium_dark_text"
+                            style="@style/small_dark_text"
                             android:text="청소년 가능" />
                     </LinearLayout>
                 </LinearLayout>
@@ -389,6 +388,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginHorizontal="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/large_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="5dp"

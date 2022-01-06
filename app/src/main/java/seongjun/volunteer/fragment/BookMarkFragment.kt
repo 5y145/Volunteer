@@ -61,6 +61,13 @@ class BookMarkFragment : Fragment() {
 
     private fun setObserver() {
         viewModel.bookMarkList.observe(viewLifecycleOwner, {
+            if (viewModel.bookMarkList.value!!.isNotEmpty()) {
+                binding.container.visibility = View.VISIBLE
+                binding.noResult.visibility = View.GONE
+            } else {
+                binding.container.visibility = View.GONE
+                binding.noResult.visibility = View.VISIBLE
+            }
             volunteerAdapter.setData(viewModel.bookMarkList.value!!)
         })
     }

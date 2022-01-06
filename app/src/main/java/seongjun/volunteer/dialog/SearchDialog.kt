@@ -25,10 +25,9 @@ class SearchDialog(context : Context) {
     private var gugunCode = ""
 
     @SuppressLint("SetTextI18n")
-    @RequiresApi(Build.VERSION_CODES.O)
     fun showDialog(context : Context) {
         dialog.setContentView(R.layout.dialog_search)
-        dialog.window!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+        dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
         dialog.setCanceledOnTouchOutside(true)
         dialog.setCancelable(true)
         dialog.show()
@@ -109,8 +108,8 @@ class SearchDialog(context : Context) {
             imm.hideSoftInputFromWindow(etSearch.windowToken, 0)
         }
 
-        val nextDay = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
-        val nextWeek = LocalDate.now().plusDays(8).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+        val nextDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+        val nextWeek = LocalDate.now().plusDays(14).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
 
         tvStartDay.text = nextDay
 
@@ -118,7 +117,7 @@ class SearchDialog(context : Context) {
             val today = GregorianCalendar()
             val year: Int = today.get(Calendar.YEAR)
             val month: Int = today.get(Calendar.MONTH)
-            val date: Int = today.get(Calendar.DATE).plus(1)
+            val date: Int = today.get(Calendar.DATE)
             val dlg = DatePickerDialog(context, { view, year, month, dayOfMonth ->
                     val m = if (month + 1 < 10) "0${month + 1}" else "${month + 1}"
                     val d = if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
@@ -133,7 +132,7 @@ class SearchDialog(context : Context) {
             val today = GregorianCalendar()
             val year: Int = today.get(Calendar.YEAR)
             val month: Int = today.get(Calendar.MONTH)
-            val date: Int = today.get(Calendar.DATE).plus(8)
+            val date: Int = today.get(Calendar.DATE).plus(14)
             val dlg = DatePickerDialog(context, { view, year, month, dayOfMonth ->
                     val m = if (month + 1 < 10) "0${month + 1}" else "${month + 1}"
                     val d = if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"

@@ -18,8 +18,8 @@
             android:id="@+id/ibClose"
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginEnd="@dimen/small_margin"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="end"
             android:background="@drawable/sharp_close_24"/>
 
@@ -60,19 +60,18 @@
 
                 <ImageButton
                     android:id="@+id/ibCancel"
-                    android:layout_marginHorizontal="@dimen/medium_margin"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
+                    android:layout_marginHorizontal="@dimen/small_margin"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/sharp_close_24"
-                    android:background="@android:color/transparent"
+                    android:background="@drawable/sharp_close_24"
                     android:gravity="center"
                     android:visibility="gone" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:layout_marginStart="@dimen/medium_margin"
             style="@style/medium_dark_text"
             android:text="지역" />
@@ -101,7 +100,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginTop="@dimen/large_text"
             android:layout_marginHorizontal="@dimen/medium_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,14 +126,14 @@
                 <ImageButton
                     android:id="@+id/ibStartDay"
                     android:layout_gravity="end"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:background="@drawable/ic_day"/>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:layout_marginHorizontal="@dimen/medium_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -160,19 +159,19 @@
 
                 <ImageButton
                     android:id="@+id/ibEndDay"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:background="@drawable/ic_day"/>
             </LinearLayout>
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginVertical="@dimen/large_margin"
             android:layout_marginHorizontal="@dimen/medium_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="5dp"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="false">
 
             <Button
                 android:id="@+id/btnSearch"

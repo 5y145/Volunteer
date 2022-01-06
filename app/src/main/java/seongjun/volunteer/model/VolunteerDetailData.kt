@@ -76,10 +76,10 @@ data class VolunteerDetailData(
     val phoneNumber: String,
 
     @SerializedName("email") // 이메일
-    val email: String,
+    val email: String?,
 
     @SerializedName("fxnum") // 팩스
-    val fax: String,
+    val fax: String?,
 
 
 

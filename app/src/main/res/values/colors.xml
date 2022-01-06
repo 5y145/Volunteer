@@ -14,9 +14,10 @@
     <color name="red">#EF4452</color>
     <color name="green">#00CB45</color>
     <color name="orange">#F7B30F</color>
-    <color name="gray0">#DEE2E6</color> <!-- light gray text / divide line -->
-    <color name="gray1">#495057</color> <!-- dark gray text -->
+    <color name="gray0">#868E96</color> <!-- light gray text -->
+    <color name="gray1">#343A40</color> <!-- dark gray text -->
     <color name="gray2">#F1F3F5</color> <!-- background -->
+    <color name="gray3">#DEE2E6</color> <!-- divide line -->
 
     <!-- gray8 : bold text -->
     <!-- gray7 : menu and button text -->

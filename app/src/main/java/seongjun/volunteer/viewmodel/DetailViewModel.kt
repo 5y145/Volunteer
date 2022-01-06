@@ -8,18 +8,20 @@ import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerDetailData
 import seongjun.volunteer.repository.Repository
 
-class DetailViewModel(): ViewModel() {
+class DetailViewModel: ViewModel() {
 
     val repository = Repository.getInstance()
 
     var volunteerDetailData: VolunteerDetailData? = null
-    val isLoading = MutableLiveData<Boolean>().apply { value = false }
+    val isComplete = MutableLiveData<Boolean>().apply { value = false }
+    var programId = ""
+    var url = ""
+    var isBookMark = false
 
     fun getVolunteerDetail(programId: String) {
         viewModelScope.launch {
-            isLoading.value = true
             volunteerDetailData = repository.getVolunteerDetail(programId)
-            isLoading.value = false
+            isComplete.value = true
         }
     }
 
@@ -45,6 +47,11 @@ class DetailViewModel(): ViewModel() {
     }
 
     fun getTime(start: Int, end: Int): String {
-        return "$start ~ $end"
+        return "${start}시 ~ ${end}시"
+    }
+
+    fun isEmail(email: String?): Boolean {
+        if (email == null) return false
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }

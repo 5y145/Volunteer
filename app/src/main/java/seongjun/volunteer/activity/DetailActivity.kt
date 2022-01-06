@@ -5,54 +5,42 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import seongjun.volunteer.R
 import seongjun.volunteer.databinding.ActivityDetailBinding
 import seongjun.volunteer.model.VolunteerDetailData
-import seongjun.volunteer.repository.Repository
 import seongjun.volunteer.viewmodel.DetailViewModel
-import seongjun.volunteer.viewmodel.MainViewModel
-import kotlin.properties.Delegates
 
 class DetailActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
     private val viewModel: DetailViewModel by viewModels()
 
-    private lateinit var programId: String
-    private lateinit var url: String
-    private var isBookMark by Delegates.notNull<Boolean>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        programId = intent.getStringExtra("programId").toString()
-        url = intent.getStringExtra("url").toString()
-        isBookMark = intent.getBooleanExtra("isBookMark", false)
-        viewModel.getVolunteerDetail(programId)
+        binding.container.visibility = View.GONE
+        viewModel.programId = intent.getStringExtra("programId").toString()
+        viewModel.url = intent.getStringExtra("url").toString()
+        viewModel.isBookMark = intent.getBooleanExtra("isBookMark", false)
+        if (viewModel.programId != "") viewModel.getVolunteerDetail(viewModel.programId)
         setObserver()
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setView(item: VolunteerDetailData?) {
-        if (item == null) return
-
+    private fun setView(item: VolunteerDetailData) {
         binding.tvProgramId.text = item.programId // 봉사 아이디
         binding.tvField.text = item.field // 봉사 분야
-        binding.tvTitle.text = item.title // 봉사 제목
+        binding.tvVolunteerTitle.text = item.title // 봉사 제목
 
         binding.tvArea.text = item.area // 봉사 지역
         binding.tvPlace.text = item.place // 봉사 장소
         binding.tvNeedPersonNumber.text = "${item.needPersonNumber}명" // 모집 인원
-
-        binding.tvIsFamilyPossible.visibility = if (item.isFamilyPossible == "Y") View.VISIBLE else View.GONE
-        binding.tvIsGroupPossible.visibility = if (item.isGroupPossible == "Y") View.VISIBLE else View.GONE
 
         when(item.state) { // 모집 상태
             1 -> binding.tvState.text = "모집대기"
@@ -70,36 +58,38 @@ class DetailActivity : AppCompatActivity() {
 
         binding.tvManager.text = item.manager// 담당자
         binding.tvPhoneNumber.text = item.phoneNumber // 전화번호
-        binding.tvEmail.text = if (item.email == "null" || item.email == "@") "" else item.email // 이메일
+        binding.tvEmail.text = if (viewModel.isEmail(item.email)) item.email else "" // 이메일
 
         binding.btnUrl.setOnClickListener { // 신청 url
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.url)))
         }
 
         // 북마크
-        if (isBookMark) binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_24)
+        if (viewModel.isBookMark) binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_24)
         else binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_border_24)
 
         binding.ibBookMark.setOnClickListener {
-            if (isBookMark) {
-                viewModel.removeBookMark(programId)
-                isBookMark = false
+            if (viewModel.isBookMark) {
+                viewModel.removeBookMark(viewModel.programId)
+                viewModel.isBookMark = false
                 binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_border_24)
             } else {
-                viewModel.addBookMark(item, url)
-                isBookMark = true
+                viewModel.addBookMark(item, viewModel.url)
+                viewModel.isBookMark = true
                 binding.ibBookMark.setBackgroundResource(R.drawable.sharp_bookmark_24)
             }
         }
 
-        // 화면에 표시
-        binding.llContainer.visibility = View.VISIBLE
-        binding.pb.visibility = View.GONE
+        binding.container.visibility = View.VISIBLE
     }
 
     private fun setObserver() {
-        viewModel.isLoading.observe(this, {
-            if (!viewModel.isLoading.value!! && viewModel.volunteerDetailData != null) setView(viewModel.volunteerDetailData)
+        viewModel.isComplete.observe(this, {
+            if (viewModel.isComplete.value!!) {
+                viewModel.isComplete.value = false
+                if (viewModel.volunteerDetailData != null) setView(viewModel.volunteerDetailData!!)
+                else finish()
+            }
         })
     }
 }
