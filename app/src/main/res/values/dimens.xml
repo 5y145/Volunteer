@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- margin -->
+    <dimen name="large_margin">24dp</dimen>
+    <dimen name="medium_margin">16dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+
+    <!-- fond size -->
+    <dimen name="label_text">20dp</dimen>
+    <dimen name="large_text">16dp</dimen>
+    <dimen name="medium_text">14dp</dimen>
+    <dimen name="small_text">12dp</dimen>
+</resources>

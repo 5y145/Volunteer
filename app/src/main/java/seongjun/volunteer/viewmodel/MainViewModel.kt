@@ -1,5 +1,6 @@
 package seongjun.volunteer.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import seongjun.volunteer.model.VolunteerData
@@ -26,7 +27,13 @@ class MainViewModel: ViewModel() {
     val bookMarkList = repository.getBookMarkDataList()
 
     init {
+        Log.d("###", "MainViewModel open")
         getVolunteerListWithArea()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.d("###", "MainViewModel close")
     }
 
     // Use Retrofit

@@ -8,7 +8,7 @@
         android:name=".ApplicationClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"
-        android:label="1365 volunteer"
+        android:label="1365 봉사활동"
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Volunteer"

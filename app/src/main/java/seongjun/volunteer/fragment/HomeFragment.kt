@@ -117,8 +117,8 @@ class HomeFragment : Fragment() {
         viewModel.isComplete.observe(viewLifecycleOwner, {
             if (viewModel.isComplete.value!!) {
                 volunteerAdapter.setData(viewModel.volunteerList.value!!)
-                if (viewModel.volunteerList.value!!.size == 0) binding.llNoResult.visibility = View.VISIBLE
-                else binding.llNoResult.visibility = View.GONE
+                if (viewModel.volunteerList.value!!.size == 0) binding.noResult.visibility = View.VISIBLE
+                else binding.noResult.visibility = View.GONE
                 viewModel.isComplete.postValue(false)
             }
         })

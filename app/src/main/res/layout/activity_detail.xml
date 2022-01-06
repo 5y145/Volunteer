@@ -6,30 +6,20 @@
     tools:context=".activity.DetailActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray1">
+    android:background="@color/gray2">
 
     <LinearLayout
-        android:id="@+id/llAppBar"
-        android:paddingBottom="4dp"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:gravity="bottom"
-        android:background="@color/white"
+        android:id="@+id/appLabel"
+        style="@style/app_label"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
-            android:id="@+id/tvLabel"
-            android:layout_marginHorizontal="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="세부정보"
-            android:textSize="20dp"
-            android:fontFamily="@font/nanum_bold"
-            android:textColor="@color/black" />
+            android:id="@+id/tvTitle"
+            android:layout_marginStart="@dimen/medium_margin"
+            style="@style/label_text"
+            android:text="세부정보" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -42,48 +32,47 @@
             android:layout_marginEnd="16dp"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:backgroundTint="@color/orange"/>
+            android:background="@drawable/sharp_bookmark_border_24"
+            android:backgroundTint="@color/green"/>
     </LinearLayout>
 
     <View
         android:id="@+id/v"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/gray3"
-        app:layout_constraintTop_toBottomOf="@+id/llAppBar"
+        style="@style/app_divide"
+        app:layout_constraintTop_toBottomOf="@+id/appLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <LinearLayout
-        android:id="@+id/llContainer"
+    <ScrollView
+        android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:gravity="center"
-        android:background="@color/gray1"
-        android:visibility="gone"
+        android:scrollbars="none"
+        android:overScrollMode="never"
         app:layout_constraintTop_toBottomOf="@+id/v"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:scrollbars="none"
-            android:overScrollMode="never">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginHorizontal="@dimen/small_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                app:cardCornerRadius="5dp"
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
+                    android:paddingVertical="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/white">
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_marginTop="8dp"
@@ -93,31 +82,25 @@
 
                         <TextView
                             android:id="@+id/tvField"
-                            android:layout_marginStart="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginStart="@dimen/medium_margin"
+                            style="@style/small_dark_text"
+                            android:text="봉사 분야 > " />
 
                         <TextView
                             android:id="@+id/tvProgramId"
-                            android:layout_marginStart="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginStart="@dimen/small_margin"
+                            style="@style/small_dark_text"
+                            android:text="12345678" />
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tvVolunteerTitle"
+                        android:layout_margin="@dimen/medium_margin"
                         android:gravity="center"
-                        android:layout_margin="16dp"
-                        android:id="@+id/tvTitle"
+                        style="@style/large_dark_text"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="\n\n\n"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/nanum_bold"
-                        android:textColor="@color/black" />
+                        android:layout_height="48dp"
+                        android:text="봉사 제목\n ..." />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -125,158 +108,113 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="봉사 지역"
-                            android:fontFamily="@font/nanum_bold"
-                            android:textColor="@color/black"
-                            android:textSize="14dp"/>
+                            android:layout_marginStart="@dimen/medium_margin"
+                            style="@style/medium_text"
+                            android:text="봉사 지역" />
 
                         <TextView
-                            android:layout_margin="16dp"
                             android:id="@+id/tvArea"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginStart="@dimen/small_margin"
+                            style="@style/medium_dark_text"
+                            android:text="서울시 ㅇㅇ구"/>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/small_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="봉사 장소"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold"
-                            android:textColor="@color/black" />
+                            android:layout_marginStart="@dimen/medium_margin"
+                            style="@style/medium_text"
+                            android:text="봉사 장소" />
 
                         <TextView
                             android:id="@+id/tvPlace"
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginStart="@dimen/small_margin"
+                            style="@style/medium_dark_text"
+                            android:text="ㅇㅇ 마을 회관"/>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/small_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="모집 상태"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold"
-                            android:textColor="@color/black" />
-
-                        <TextView
-                            android:id="@+id/tvState"
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="모집 인원"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold"
-                            android:textColor="@color/black" />
+                            android:layout_marginStart="@dimen/medium_margin"
+                            style="@style/medium_text"
+                            android:text="모집 인원" />
 
                         <TextView
                             android:id="@+id/tvNeedPersonNumber"
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
-
-                        <TextView
-                            android:id="@+id/tvIsFamilyPossible"
-                            android:padding="4dp"
-                            android:layout_marginVertical="16dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="가족 가능"
-                            android:textSize="10dp"
-                            android:fontFamily="@font/nanum_bold"
-                            android:textColor="@color/white"
-                            android:background="@color/orange"/>
-
-                        <TextView
-                            android:id="@+id/tvIsGroupPossible"
-                            android:padding="4dp"
-                            android:layout_marginVertical="16dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="단체 가능"
-                            android:textSize="10dp"
-                            android:fontFamily="@font/nanum_bold"
-                            android:textColor="@color/white"
-                            android:background="@color/orange"/>
+                            android:layout_marginStart="@dimen/small_margin"
+                            style="@style/medium_dark_text"
+                            android:text="1명"/>
                     </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/white">
-
-                    <TextView
-                        android:layout_margin="8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="봉사 내용"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/nanum_bold"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_margin="16dp"
-                        android:id="@+id/tvContents"
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/small_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="모집 내용"
-                        android:textSize="14dp"
-                        android:fontFamily="@font/nanum_bold"
-                        android:textColor="@color/gray7"/>
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_marginStart="@dimen/medium_margin"
+                            style="@style/medium_text"
+                            android:text="봉사 상태" />
+
+                        <TextView
+                            android:id="@+id/tvState"
+                            android:layout_marginStart="@dimen/small_margin"
+                            style="@style/medium_dark_text"
+                            android:text="모집 중"/>
+                    </LinearLayout>
+
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginHorizontal="@dimen/small_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
-                    android:layout_marginTop="16dp"
+                    android:paddingVertical="@dimen/small_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvContents"
+                        android:layout_margin="@dimen/small_margin"
+                        style="@style/medium_dark_text"
+                        android:text="봉사 내용" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginHorizontal="@dimen/small_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:paddingVertical="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center"
-                    android:background="@color/white">
+                    android:gravity="center">
 
                     <LinearLayout
-                        android:layout_marginVertical="8dp"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="@dimen/medium_margin"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -286,57 +224,22 @@
                         <ImageView
                             android:layout_width="28dp"
                             android:layout_height="28dp"
-                            android:background="@drawable/ic_hourglass" />
+                            android:background="@drawable/ic_notice" />
 
                         <TextView
-                            android:layout_marginVertical="4dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="모집 기간"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginTop="4dp"
+                            style="@style/medium_dark_text"
+                            android:text="모집 기간" />
 
                         <TextView
                             android:id="@+id/tvNoticeDay"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/medium_dark_text"
                             android:text="모집 기간"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:textColor="@color/skyBlue"/>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginVertical="8dp"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:background="@drawable/ic_calendar" />
-
-                        <TextView
-                            android:layout_marginVertical="4dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="봉사 기간"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
-
-                        <TextView
-                            android:id="@+id/tvDay"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="봉사 기간"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_marginVertical="8dp"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -346,74 +249,87 @@
                         <ImageView
                             android:layout_width="28dp"
                             android:layout_height="28dp"
-                            android:background="@drawable/ic_clock" />
+                            android:background="@drawable/ic_day" />
 
                         <TextView
-                            android:layout_marginVertical="4dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="봉사 시간"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginTop="4dp"
+                            style="@style/medium_dark_text"
+                            android:text="봉사 기간" />
 
                         <TextView
-                            android:id="@+id/tvTime"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="봉사 시간"
-                            android:fontFamily="@font/nanum_bold"
-                            android:textSize="14dp"/>
+                            android:id="@+id/tvDay"
+                            android:layout_marginTop="4dp"
+                            style="@style/medium_dark_text"
+                            android:text="봉사 기간"
+                            android:textColor="@color/skyBlue"/>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginVertical="8dp"
                         android:layout_weight="1"
-                        android:layout_marginEnd="16dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:background="@drawable/ic_certificate" />
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/ic_time" />
+
+                        <TextView
+                            android:layout_marginTop="4dp"
+                            style="@style/medium_dark_text"
+                            android:text="봉사 시간" />
+
+                        <TextView
+                            android:id="@+id/tvTime"
+                            android:layout_marginTop="4dp"
+                            style="@style/medium_dark_text"
+                            android:text="봉사 시간"
+                            android:textColor="@color/skyBlue"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginEnd="@dimen/medium_margin"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/ic_certification" />
 
                         <TextView
                             android:id="@+id/tvIsAdultPossible"
-                            android:layout_marginVertical="4dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="성인 가능"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginTop="4dp"
+                            style="@style/medium_dark_text"
+                            android:text="성인 가능" />
 
                         <TextView
                             android:id="@+id/tvIsYoungPossible"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="청소년 가능"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginTop="4dp"
+                            style="@style/medium_dark_text"
+                            android:text="청소년 가능" />
                     </LinearLayout>
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginHorizontal="@dimen/small_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
-                    android:layout_marginTop="16dp"
+                    android:paddingVertical="@dimen/medium_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/white">
-
-                    <TextView
-                        android:layout_gravity="center"
-                        android:layout_margin="8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="신청 정보"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/nanum_bold"
-                        android:textColor="@color/black" />
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -421,90 +337,68 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="관리자"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold"
-                            android:textColor="@color/black" />
+                            android:layout_marginStart="@dimen/medium_margin"
+                            style="@style/medium_text"
+                            android:text="관리자" />
 
                         <TextView
                             android:id="@+id/tvManager"
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="관리자"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginStart="@dimen/small_margin"
+                            style="@style/medium_dark_text"
+                            android:text="관리자"/>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/small_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="연락처"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold"
-                            android:textColor="@color/black" />
+                            android:layout_marginStart="@dimen/medium_margin"
+                            style="@style/medium_text"
+                            android:text="연락처" />
 
                         <TextView
                             android:id="@+id/tvPhoneNumber"
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="연락처"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginStart="@dimen/small_margin"
+                            style="@style/medium_dark_text"
+                            android:text="연락처"/>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/small_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="이메일"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold"
-                            android:textColor="@color/black" />
+                            android:layout_marginStart="@dimen/medium_margin"
+                            style="@style/medium_text"
+                            android:text="이메일" />
 
                         <TextView
                             android:id="@+id/tvEmail"
-                            android:layout_margin="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="이메일"
-                            android:textSize="14dp"
-                            android:fontFamily="@font/nanum_bold" />
+                            android:layout_marginStart="@dimen/small_margin"
+                            style="@style/medium_dark_text"
+                            android:text="이메일"/>
                     </LinearLayout>
-
-                    <Button
-                        android:id="@+id/btnUrl"
-                        android:layout_margin="4dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="신청하기"
-                        android:fontFamily="@font/nanum_bold"/>
                 </LinearLayout>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-    <ProgressBar
-        android:id="@+id/pb"
-        android:layout_marginBottom="32dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginHorizontal="@dimen/small_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardUseCompatPadding="true">
+
+                <Button
+                    android:id="@+id/btnUrl"
+                    style="@style/solid_button"
+                    android:text="신청하기" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

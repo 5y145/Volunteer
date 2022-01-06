@@ -1,5 +1,6 @@
 package seongjun.volunteer.activity
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setNavigation()
+        getWindow().setNavigationBarColor(Color.TRANSPARENT);
     }
 
     private fun setNavigation() {
