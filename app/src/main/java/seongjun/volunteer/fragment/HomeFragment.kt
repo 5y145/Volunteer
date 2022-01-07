@@ -118,7 +118,7 @@ class HomeFragment : Fragment() {
                     binding.noResult.visibility = View.VISIBLE
                 }
                 volunteerAdapter.setData(viewModel.volunteerList.value!!)
-                viewModel.isComplete.postValue(false)
+                viewModel.isComplete.value = false
             }
         })
 

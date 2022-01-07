@@ -27,13 +27,11 @@ class Repository(application : Application) {
 
     // Use Retrofit
     suspend fun getVolunteerList(startDay: String, endDay: String, sidoCode: String, gugunCode: String, pageNumber: Int): MutableList<VolunteerData> {
-        Log.d("###", "요청: ${startDay} ${endDay} ${sidoCode} ${gugunCode} ${pageNumber}")
         val response = RetrofitInstance.API.getVolunteerList(startDay, endDay, sidoCode, gugunCode, pageNumber)
         return if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
     }
 
     suspend fun getVolunteerListWithText(startDay: String, endDay: String, searchText: String, sidoCode: String, gugunCode: String, pageNumber: Int): MutableList<VolunteerData> {
-        Log.d("###", "검색어 요청: ${startDay} ${endDay} ${searchText} ${sidoCode} ${gugunCode} ${pageNumber}")
         val response = RetrofitInstance.API.getVolunteerListWithText(startDay, endDay, searchText, sidoCode, pageNumber)
         return if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
     }

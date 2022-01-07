@@ -56,6 +56,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/appLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +70,6 @@
         <TextView
             android:layout_marginTop="@dimen/small_margin"
             style="@style/small_dark_text"
-            android:text="No BookMarks Found" />
+            android:text="bookmark is empty" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

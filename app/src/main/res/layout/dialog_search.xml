@@ -166,8 +166,7 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:layout_marginVertical="@dimen/large_margin"
-            android:layout_marginHorizontal="@dimen/medium_margin"
+            android:layout_margin="@dimen/medium_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="5dp"

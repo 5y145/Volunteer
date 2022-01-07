@@ -19,17 +19,7 @@
     <color name="gray2">#F1F3F5</color> <!-- background -->
     <color name="gray3">#DEE2E6</color> <!-- divide line -->
 
-    <!-- gray8 : bold text -->
-    <!-- gray7 : menu and button text -->
-    <!-- gray5 : menu and button inactive text -->
 
-    <!-- gray0 : background -->
-    <!-- gray1 : background in background -->
-    <!-- gray+2 :touch background  -->
-
-    <!-- gray3 : divide line -->
-    <!-- gray4 : button line -->
-    <!-- gray2 : button inactive line -->
 
 <!--    <color name="gray0">#F8F9FA</color>-->
 <!--    <color name="gray1">#F1F3F5</color>-->
@@ -41,4 +31,16 @@
 <!--    <color name="gray7">#495057</color>-->
 <!--    <color name="gray8">#343A40</color>-->
 <!--    <color name="gray9">#212529</color>-->
+
+<!-- gray8 : bold text -->
+<!-- gray7 : menu and button text -->
+<!-- gray5 : menu and button inactive text -->
+
+<!-- gray0 : background -->
+<!-- gray1 : background in background -->
+<!-- gray+2 :touch background  -->
+
+<!-- gray3 : divide line -->
+<!-- gray4 : button line -->
+<!-- gray2 : button inactive line -->
 </resources>

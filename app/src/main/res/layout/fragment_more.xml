@@ -46,92 +46,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-<!--            <LinearLayout-->
-<!--                android:paddingVertical="8dp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                android:background="@color/white">-->
-
-<!--                <TextView-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:layout_marginHorizontal="16dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="bottom"-->
-<!--                    android:text="Q &amp; A"-->
-<!--                    android:textSize="18dp"-->
-<!--                    android:fontFamily="@font/nanum_bold"-->
-<!--                    android:textColor="@color/black"/>-->
-
-<!--                <TextView-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:layout_marginHorizontal="16dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="bottom"-->
-<!--                    android:text="Q. 봉사 신청을 앱에서 바로 할 수 없나요?"-->
-<!--                    android:textSize="14dp"-->
-<!--                    android:fontFamily="@font/nanum_bold"-->
-<!--                    android:textColor="@color/black"/>-->
-
-<!--                <TextView-->
-<!--                    android:layout_marginTop="8dp"-->
-<!--                    android:layout_marginHorizontal="16dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="bottom"-->
-<!--                    android:text="개발자는 권한이 없기 때문에 홈페이지에서만 신청하실 수 있습니다."-->
-<!--                    android:textSize="12dp"-->
-<!--                    android:fontFamily="@font/nanum_bold"-->
-<!--                    android:textColor="@color/gray7"/>-->
-
-<!--                <TextView-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:layout_marginHorizontal="16dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="bottom"-->
-<!--                    android:text="Q. 북마크 추가는 어떻게 하나요?"-->
-<!--                    android:textSize="14dp"-->
-<!--                    android:fontFamily="@font/nanum_bold"-->
-<!--                    android:textColor="@color/black"/>-->
-
-<!--                <TextView-->
-<!--                    android:layout_marginTop="8dp"-->
-<!--                    android:layout_marginHorizontal="16dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="bottom"-->
-<!--                    android:text="세부정보 화면에서 주황색 아이콘을 누르시면 추가할 수 있습니다."-->
-<!--                    android:textSize="12dp"-->
-<!--                    android:fontFamily="@font/nanum_bold"-->
-<!--                    android:textColor="@color/gray7"/>-->
-
-<!--                <TextView-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:layout_marginHorizontal="16dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="bottom"-->
-<!--                    android:text="Q. 앱에 대한 건의사항이 있어요!"-->
-<!--                    android:textSize="14dp"-->
-<!--                    android:fontFamily="@font/nanum_bold"-->
-<!--                    android:textColor="@color/black"/>-->
-
-<!--                <TextView-->
-<!--                    android:layout_marginTop="8dp"-->
-<!--                    android:layout_marginHorizontal="16dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="bottom"-->
-<!--                    android:text="메일로 알려주시면 다음 업데이트에 반영하도록 하겠습니다."-->
-<!--                    android:textSize="12dp"-->
-<!--                    android:fontFamily="@font/nanum_bold"-->
-<!--                    android:textColor="@color/gray7"/>-->
-<!--            </LinearLayout>-->
-
             <androidx.cardview.widget.CardView
+                android:id="@+id/cvAnswer"
                 android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginHorizontal="@dimen/small_margin"
                 android:layout_width="match_parent"
@@ -143,18 +59,74 @@
                     android:paddingVertical="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:paddingVertical="8dp"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_marginHorizontal="@dimen/medium_margin"
-                        style="@style/medium_dark_text"
-                        android:text="Q &amp; A" />
+                        <TextView
+                            android:layout_marginHorizontal="@dimen/medium_margin"
+                            style="@style/medium_dark_text"
+                            android:text="Q &amp; A" />
 
-                    <TextView
-                        android:layout_marginTop="@dimen/small_margin"
-                        android:layout_marginHorizontal="@dimen/medium_margin"
-                        style="@style/medium_dark_text"
-                        android:text="자주 묻는 질문" />
+                        <TextView
+                            android:layout_marginTop="@dimen/small_margin"
+                            android:layout_marginHorizontal="@dimen/medium_margin"
+                            style="@style/medium_dark_text"
+                            android:text="자주 묻는 질문" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_marginEnd="@dimen/medium_margin"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/sharp_chevron_right_24"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvEmail"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginHorizontal="@dimen/small_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:paddingVertical="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:paddingVertical="8dp"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_marginHorizontal="@dimen/medium_margin"
+                            style="@style/medium_dark_text"
+                            android:text="Email" />
+
+                        <TextView
+                            android:layout_marginTop="@dimen/small_margin"
+                            android:layout_marginHorizontal="@dimen/medium_margin"
+                            style="@style/medium_text"
+                            android:text="5y145@naver.com" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_marginEnd="@dimen/medium_margin"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/sharp_chevron_right_24"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -181,34 +153,7 @@
                         android:layout_marginTop="@dimen/small_margin"
                         android:layout_marginHorizontal="@dimen/medium_margin"
                         style="@style/medium_text"
-                        android:text="1.0" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_marginTop="@dimen/small_margin"
-                android:layout_marginHorizontal="@dimen/small_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="5dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:paddingVertical="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_marginHorizontal="@dimen/medium_margin"
-                        style="@style/medium_dark_text"
-                        android:text="Email" />
-
-                    <TextView
-                        android:layout_marginTop="@dimen/small_margin"
-                        android:layout_marginHorizontal="@dimen/medium_margin"
-                        style="@style/medium_text"
-                        android:text="5y145@naver.com" />
+                        android:text="1.1" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

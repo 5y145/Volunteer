@@ -5,6 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import seongjun.volunteer.databinding.ItemVolunteerBinding
 import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerData
