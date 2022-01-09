@@ -23,8 +23,8 @@ class SearchDialog(context : Context) {
     private val dialog = Dialog(context)
     private var sidoCode = ""
     private var gugunCode = ""
-    private var startDay = ""
-    private var endDay = ""
+    private var startDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+    private var endDay = LocalDate.now().plusDays(14).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
 
     @SuppressLint("SetTextI18n")
     fun showDialog(context : Context) {
@@ -110,10 +110,7 @@ class SearchDialog(context : Context) {
             imm.hideSoftInputFromWindow(etSearch.windowToken, 0)
         }
 
-        val nextDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
-        val nextWeek = LocalDate.now().plusDays(14).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
-
-        tvStartDay.text = dayToText(nextDay)
+        tvStartDay.text = dayToText(startDay)
 
         ibStartDay.setOnClickListener {
             val today = GregorianCalendar()
@@ -129,7 +126,7 @@ class SearchDialog(context : Context) {
             dlg.show()
         }
 
-        tvEndDay.text = dayToText(nextWeek)
+        tvEndDay.text = dayToText(endDay)
 
         ibEndDay.setOnClickListener {
             val today = GregorianCalendar()

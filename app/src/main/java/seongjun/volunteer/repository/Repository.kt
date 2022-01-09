@@ -1,7 +1,6 @@
 package seongjun.volunteer.repository
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import seongjun.volunteer.model.BookMarkData
 import seongjun.volunteer.model.VolunteerDetailData
