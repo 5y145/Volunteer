@@ -18,12 +18,13 @@
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_marginHorizontal="@dimen/medium_margin"
+            android:layout_marginStart="@dimen/large_margin"
             style="@style/label_text"
             android:text="봉사정보" />
 
         <Spinner
             android:id="@+id/snSido"
+            android:layout_marginStart="@dimen/medium_margin"
             android:paddingBottom="4dp"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
@@ -45,12 +46,12 @@
 
         <ImageButton
             android:id="@+id/ibSearch"
-            android:layout_marginEnd="@dimen/medium_margin"
+            android:layout_marginEnd="@dimen/large_margin"
             android:paddingBottom="4dp"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="@drawable/sharp_search_24"
-            android:backgroundTint="@color/black"/>
+            android:backgroundTint="@color/skyBlue"/>
     </LinearLayout>
 
     <View
@@ -109,4 +110,36 @@
             style="@style/small_dark_text"
             android:text="result is empty" />
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabUp"
+        android:layout_marginEnd="@dimen/large_margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_up"
+        app:backgroundTint="@color/skyBlueLight"
+        app:tint="@color/white"
+        app:fabSize="mini"
+        app:maxImageSize="24dp"
+        android:clickable="true"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/fabDown"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabDown"
+        android:layout_marginEnd="@dimen/large_margin"
+        android:layout_marginBottom="@dimen/large_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_down"
+        app:backgroundTint="@color/skyBlueLight"
+        app:tint="@color/white"
+        app:fabSize="mini"
+        app:maxImageSize="24dp"
+        android:clickable="true"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

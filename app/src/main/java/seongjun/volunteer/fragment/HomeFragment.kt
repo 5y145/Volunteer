@@ -100,6 +100,14 @@ class HomeFragment : Fragment() {
                 }
             })
         }
+
+        binding.fabUp.setOnClickListener {
+            binding.rv.smoothScrollToPosition(0)
+        }
+
+        binding.fabDown.setOnClickListener {
+            binding.rv.smoothScrollToPosition(volunteerAdapter.itemCount - 1)
+        }
     }
 
     private fun setObserver() {
@@ -119,6 +127,16 @@ class HomeFragment : Fragment() {
                 }
                 volunteerAdapter.setData(viewModel.volunteerList.value!!)
                 viewModel.isComplete.value = false
+            }
+        })
+
+        viewModel.volunteerList.observe(viewLifecycleOwner, {
+            if (viewModel.volunteerList.value!!.size > 40) {
+                binding.fabUp.visibility = View.VISIBLE
+                binding.fabDown.visibility = View.VISIBLE
+            } else {
+                binding.fabUp.visibility = View.GONE
+                binding.fabDown.visibility = View.GONE
             }
         })
 

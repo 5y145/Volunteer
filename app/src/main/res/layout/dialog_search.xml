@@ -2,7 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="300dp"
+    android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center"
@@ -16,21 +16,22 @@
 
         <ImageButton
             android:id="@+id/ibClose"
-            android:layout_marginTop="@dimen/small_margin"
-            android:layout_marginEnd="@dimen/small_margin"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_gravity="end"
-            android:background="@drawable/sharp_close_24"/>
+            android:background="@drawable/sharp_close_24"
+            android:backgroundTint="@color/skyBlue"/>
 
         <TextView
             android:layout_marginStart="@dimen/medium_margin"
-            style="@style/medium_dark_text"
+            style="@style/large_dark_text"
             android:text="검색" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv"
-            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginTop="4dp"
             android:layout_marginHorizontal="@dimen/medium_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,23 +47,24 @@
                     android:id="@+id/etSearch"
                     android:paddingHorizontal="8dp"
                     android:layout_width="0dp"
-                    android:layout_height="32dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:drawablePadding="8dp"
+                    android:drawablePadding="@dimen/small_margin"
                     android:drawableStart="@drawable/sharp_search_24"
-                    android:background="@color/gray2"
+                    android:drawableTint="@color/skyBlue"
+                    android:background="@color/white"
                     android:textSize="@dimen/medium_text"
                     android:textColor="@color/gray1" />
 
                 <ImageButton
                     android:id="@+id/ibCancel"
                     android:layout_marginHorizontal="@dimen/small_margin"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:background="@drawable/sharp_close_24"
                     android:gravity="center"
@@ -73,12 +75,12 @@
         <TextView
             android:layout_marginTop="@dimen/large_margin"
             android:layout_marginStart="@dimen/medium_margin"
-            style="@style/medium_dark_text"
+            style="@style/large_dark_text"
             android:text="지역" />
 
         <LinearLayout
             android:layout_marginTop="@dimen/small_margin"
-            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginHorizontal="@dimen/medium_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -100,14 +102,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/large_text"
+            android:layout_marginTop="@dimen/large_margin"
             android:layout_marginHorizontal="@dimen/medium_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                style="@style/medium_dark_text"
+                style="@style/large_dark_text"
                 android:text="봉사 시작일" />
 
             <LinearLayout
@@ -121,13 +123,13 @@
                     android:layout_gravity="bottom"
                     style="@style/medium_dark_text"
                     android:text="000000"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/skyBlue"/>
 
                 <ImageButton
                     android:id="@+id/ibStartDay"
-                    android:layout_gravity="end"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:background="@drawable/ic_day"/>
             </LinearLayout>
         </LinearLayout>
@@ -141,7 +143,7 @@
 
 
             <TextView
-                style="@style/medium_dark_text"
+                style="@style/large_dark_text"
                 android:text="봉사 종료일" />
 
             <LinearLayout
@@ -154,25 +156,28 @@
                     android:layout_weight="1"
                     android:layout_gravity="bottom"
                     style="@style/medium_dark_text"
-                    android:text="000000"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/skyBlue"
+                    android:text="000000" />
 
                 <ImageButton
                     android:id="@+id/ibEndDay"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:background="@drawable/ic_day"/>
             </LinearLayout>
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:layout_margin="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:layout_marginHorizontal="@dimen/medium_margin"
+            android:layout_marginBottom="@dimen/medium_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="5dp"
             app:cardUseCompatPadding="false">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSearch"
                 style="@style/solid_button"
                 android:text="검색" />

@@ -6,6 +6,7 @@
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/btn_disable.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/btn_ghost.xml" value="0.2677083333333333" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/btn_outline.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/btn_round.xml" value="0.3875" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/btn_solid.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/button_base.xml" value="0.18425925925925926" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/button_clicked.xml" value="0.18425925925925926" />
@@ -33,6 +34,7 @@
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_close_24.xml" value="0.38153846153846155" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_create_24.xml" value="0.38153846153846155" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_delete_24.xml" value="0.38153846153846155" />
+        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_expand_less_24.xml" value="0.3875" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_expand_more_24.xml" value="0.3875" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_favorite_24.xml" value="0.38153846153846155" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_favorite_border_24.xml" value="0.38153846153846155" />
@@ -45,14 +47,14 @@
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_send_24.xml" value="0.38153846153846155" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/drawable/sharp_settings_24.xml" value="0.38153846153846155" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/font/app_main_font.xml" value="0.3953846153846154" />
-        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/activity_detail.xml" value="0.33" />
+        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/activity_detail.xml" value="0.5" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/card_view_round.xml" value="0.33" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/dialog_answer.xml" value="0.5" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/dialog_email.xml" value="0.33" />
-        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/dialog_search.xml" value="0.33" />
+        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/dialog_search.xml" value="0.67" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_book_mark.xml" value="0.33" />
-        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_more.xml" value="0.37135416666666665" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_review.xml" value="0.33" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/layout/fragment_setting.xml" value="0.37135416666666665" />
@@ -61,6 +63,8 @@
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.33" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/menu/select_color.xml" value="0.2046875" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/mipmap-anydpi-v26/ic_logo2.xml" value="0.3875" />
+        <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/mipmap-anydpi-v26/ic_logo2_round.xml" value="0.1" />
         <entry key="..\:/Users/JangSeongJun/Documents/AndroidProject/Volunteer/app/src/main/res/mipmap-anydpi-v26/ic_logo_round.xml" value="0.22447916666666667" />
       </map>
     </option>

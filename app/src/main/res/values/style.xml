@@ -58,7 +58,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/small_text</item>
         <item name="android:textColor">@color/gray0</item>
-        <item name="android:fontFamily">@font/nanum_light</item>
+        <item name="android:fontFamily">@font/nanum_regular</item>
         <item name="android:includeFontPadding">false</item>
     </style>
     <style name="small_dark_text">
@@ -72,20 +72,20 @@
     <style name="solid_button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/medium_text</item>
+        <item name="android:textSize">@dimen/large_text</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/nanum_regular</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:background">@drawable/btn_solid</item>
     </style>
-    <style name="disable_button">
+    <style name="ghost_button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/medium_text</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/large_text</item>
+        <item name="android:textColor">@color/skyBlue</item>
         <item name="android:fontFamily">@font/nanum_regular</item>
         <item name="android:includeFontPadding">false</item>
-        <item name="android:background">@drawable/btn_disable</item>
+        <item name="android:background">@drawable/btn_ghost</item>
     </style>
     <style name="bottom_navigation" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/black</item>

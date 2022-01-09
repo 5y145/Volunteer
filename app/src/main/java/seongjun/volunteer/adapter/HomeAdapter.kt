@@ -36,7 +36,8 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.Holder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(newList: MutableList<VolunteerData>) {
-        list = newList
+        list.clear()
+        list.addAll(newList)
         notifyDataSetChanged()
     }
 

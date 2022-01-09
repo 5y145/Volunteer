@@ -9,10 +9,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="skyBlue">#3182F6</color>
-    <color name="skyBlueLight">#C1D6F3</color>
-    <color name="red">#EF4452</color>
+    <color name="skyBlue">#448AFF</color> <!-- A200 -->
+    <color name="skyBlueLight">#82B1FF</color> <!-- A100 -->
+    <color name="red">#EE4452</color>
     <color name="green">#00CB45</color>
+    <color name="transparent">#00000000</color>
     <color name="orange">#F7B30F</color>
     <color name="gray0">#868E96</color> <!-- light gray text -->
     <color name="gray1">#343A40</color> <!-- dark gray text -->

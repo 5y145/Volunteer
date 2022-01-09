@@ -64,8 +64,9 @@ class BookMarkAdapter: RecyclerView.Adapter<BookMarkAdapter.Holder>() {
             }
             binding.tvDay.text = getDate(item.startDay, item.endDay)
             binding.tvTitle.text = item.title
-            if (isBookMark(item.programId)) binding.ibBookMark.visibility = View.VISIBLE
-            else binding.ibBookMark.visibility = View.INVISIBLE
+            binding.ibBookMark.visibility = View.INVISIBLE
+//            if (isBookMark(item.programId)) binding.ibBookMark.visibility = View.VISIBLE
+//            else binding.ibBookMark.visibility = View.INVISIBLE
         }
 
         private fun getDate(startDate: Int, endDate: Int): String {

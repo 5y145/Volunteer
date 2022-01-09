@@ -48,14 +48,14 @@
 
     <ImageButton
         android:id="@+id/ibBookMark"
-        android:layout_marginEnd="@dimen/small_margin"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_marginStart="2dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
         android:background="@drawable/sharp_bookmark_24"
         android:backgroundTint="@color/green"
         app:layout_constraintTop_toTopOf="@+id/tvDay"
         app:layout_constraintBottom_toBottomOf="@+id/tvDay"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toEndOf="@+id/tvState"/>
 
     <View
         android:id="@+id/v"

@@ -18,7 +18,7 @@
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginStart="@dimen/large_margin"
             style="@style/label_text"
             android:text="더보기" />
     </LinearLayout>
@@ -48,7 +48,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvAnswer"
-                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginTop="6dp"
                 android:layout_marginHorizontal="@dimen/small_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,12 +56,11 @@
                 app:cardUseCompatPadding="true">
 
                 <LinearLayout
-                    android:paddingVertical="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <LinearLayout
-                        android:paddingVertical="8dp"
+                        android:paddingVertical="@dimen/small_margin"
                         android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -75,7 +74,7 @@
                         <TextView
                             android:layout_marginTop="@dimen/small_margin"
                             android:layout_marginHorizontal="@dimen/medium_margin"
-                            style="@style/medium_dark_text"
+                            style="@style/small_dark_text"
                             android:text="자주 묻는 질문" />
                     </LinearLayout>
 
@@ -90,7 +89,6 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvEmail"
-                android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginHorizontal="@dimen/small_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,7 +96,6 @@
                 app:cardUseCompatPadding="true">
 
                 <LinearLayout
-                    android:paddingVertical="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -117,7 +114,7 @@
                         <TextView
                             android:layout_marginTop="@dimen/small_margin"
                             android:layout_marginHorizontal="@dimen/medium_margin"
-                            style="@style/medium_text"
+                            style="@style/small_text"
                             android:text="5y145@naver.com" />
                     </LinearLayout>
 
@@ -131,7 +128,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginHorizontal="@dimen/small_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -152,13 +148,12 @@
                     <TextView
                         android:layout_marginTop="@dimen/small_margin"
                         android:layout_marginHorizontal="@dimen/medium_margin"
-                        style="@style/medium_text"
-                        android:text="1.1" />
+                        style="@style/small_text"
+                        android:text="1.2" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginHorizontal="@dimen/small_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -179,14 +174,13 @@
                     <TextView
                         android:layout_marginTop="@dimen/small_margin"
                         android:layout_marginHorizontal="@dimen/medium_margin"
-                        style="@style/medium_text"
-                        android:text="행정안전부_봉사참여정보서비스" />
+                        style="@style/small_text"
+                        android:text="행정안전부 봉사참여정보서비스" />
 
                     <TextView
-                        android:layout_marginTop="@dimen/small_margin"
                         android:layout_marginHorizontal="@dimen/medium_margin"
-                        style="@style/medium_text"
-                        android:text="행정안전부_코드조회서비스" />
+                        style="@style/small_text"
+                        android:text="행정안전부 코드조회서비스" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

@@ -23,6 +23,8 @@ class SearchDialog(context : Context) {
     private val dialog = Dialog(context)
     private var sidoCode = ""
     private var gugunCode = ""
+    private var startDay = ""
+    private var endDay = ""
 
     @SuppressLint("SetTextI18n")
     fun showDialog(context : Context) {
@@ -111,7 +113,7 @@ class SearchDialog(context : Context) {
         val nextDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
         val nextWeek = LocalDate.now().plusDays(14).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
 
-        tvStartDay.text = nextDay
+        tvStartDay.text = dayToText(nextDay)
 
         ibStartDay.setOnClickListener {
             val today = GregorianCalendar()
@@ -121,12 +123,13 @@ class SearchDialog(context : Context) {
             val dlg = DatePickerDialog(context, { view, year, month, dayOfMonth ->
                     val m = if (month + 1 < 10) "0${month + 1}" else "${month + 1}"
                     val d = if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
-                    tvStartDay.text = "${year}${m}${d}"
+                    startDay = "${year}${m}${d}"
+                    tvStartDay.text = dayToText(startDay)
                 }, year, month, date)
             dlg.show()
         }
 
-        tvEndDay.text = nextWeek
+        tvEndDay.text = dayToText(nextWeek)
 
         ibEndDay.setOnClickListener {
             val today = GregorianCalendar()
@@ -136,15 +139,20 @@ class SearchDialog(context : Context) {
             val dlg = DatePickerDialog(context, { view, year, month, dayOfMonth ->
                     val m = if (month + 1 < 10) "0${month + 1}" else "${month + 1}"
                     val d = if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
-                    tvEndDay.text = "${year}${m}${d}"
+                    endDay = "${year}${m}${d}"
+                    tvEndDay.text = dayToText(endDay)
                 }, year, month, date)
             dlg.show()
         }
 
         btnSearch.setOnClickListener {
-            onClickListener.onClick(etSearch.text.toString(), sidoCode, gugunCode, tvStartDay.text.toString(), tvEndDay.text.toString())
+            onClickListener.onClick(etSearch.text.toString(), sidoCode, gugunCode, startDay, endDay)
             dialog.dismiss()
         }
+    }
+
+    private fun dayToText(day: String): String {
+        return "${day.toInt() % 1000000 / 10000}년 ${day.toInt() % 10000 / 100}월 ${day.toInt() % 100}일"
     }
 
     interface ButtonClickListener {
