@@ -40,7 +40,7 @@
 
 <img src="https://user-images.githubusercontent.com/95672282/148668810-6e7afa54-0001-45b4-bceb-e38df2b029e1.jpg" width="33%" height="33%"><img src="https://user-images.githubusercontent.com/95672282/148668875-270b7dda-2ad2-429b-933e-3444fa17593e.jpg" width="33%" height="33%"><img src="https://user-images.githubusercontent.com/95672282/148668822-37277eb5-5082-4974-8011-e5d72bec5412.jpg" width="33%" height="33%">
 
-## Tech
+## Skill
 
  - `Kotlin`
  - `JetPack`
