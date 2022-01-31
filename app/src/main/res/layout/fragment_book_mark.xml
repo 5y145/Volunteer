@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appLabel"
         style="@style/app_label"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,16 +19,12 @@
         <TextView
             android:id="@+id/tvTitle"
             android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginBottom="@dimen/small_margin"
             style="@style/label_text"
-            android:text="북마크" />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/v"
-        style="@style/app_divide"
-        app:layout_constraintTop_toBottomOf="@+id/appLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            android:text="북마크"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/container"
@@ -37,7 +33,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/v"
+        app:layout_constraintTop_toBottomOf="@+id/appLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">

@@ -17,6 +17,7 @@ class DetailViewModel: ViewModel() {
     var programId = ""
     var url = ""
     var isBookMark = false
+    var fromBookMark = false
 
     fun getVolunteerDetail(programId: String) {
         viewModelScope.launch {

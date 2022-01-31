@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:background="@color/gray2">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appLabel"
         style="@style/app_label"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,16 +19,12 @@
         <TextView
             android:id="@+id/tvTitle"
             android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginBottom="@dimen/small_margin"
             style="@style/label_text"
-            android:text="더보기" />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/v"
-        style="@style/app_divide"
-        app:layout_constraintTop_toBottomOf="@+id/appLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            android:text="더보기"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:id="@+id/container"
@@ -36,7 +32,7 @@
         android:layout_height="0dp"
         android:scrollbars="none"
         android:overScrollMode="never"
-        app:layout_constraintTop_toBottomOf="@+id/v"
+        app:layout_constraintTop_toBottomOf="@+id/appLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -149,38 +145,7 @@
                         android:layout_marginTop="@dimen/small_margin"
                         android:layout_marginHorizontal="@dimen/medium_margin"
                         style="@style/small_text"
-                        android:text="1.3" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_marginHorizontal="@dimen/small_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="5dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:paddingVertical="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_marginHorizontal="@dimen/medium_margin"
-                        style="@style/medium_dark_text"
-                        android:text="Open Api" />
-
-                    <TextView
-                        android:layout_marginTop="@dimen/small_margin"
-                        android:layout_marginHorizontal="@dimen/medium_margin"
-                        style="@style/small_text"
-                        android:text="행정안전부 봉사참여정보서비스" />
-
-                    <TextView
-                        android:layout_marginHorizontal="@dimen/medium_margin"
-                        style="@style/small_text"
-                        android:text="행정안전부 코드조회서비스" />
+                        android:text="1.4" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

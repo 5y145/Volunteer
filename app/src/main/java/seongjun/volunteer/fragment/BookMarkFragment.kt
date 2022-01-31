@@ -44,11 +44,7 @@ class BookMarkFragment : Fragment() {
         volunteerAdapter = BookMarkAdapter().apply {
             setOnItemClickListener(object: BookMarkAdapter.OnItemClickListener{
                 override fun onItemClick(v: View, item: BookMarkData, isBookMark: Boolean) { // 화면 이동
-                    startActivity(Intent(mainActivity, DetailActivity::class.java).apply {
-                        putExtra("programId", item.programId)
-                        putExtra("url", item.url)
-                        putExtra("isBookMark", isBookMark)
-                    })
+                    viewModel.isVolunteerExist(item.programId, item.url, isBookMark, true)
                 }
             })
         }
@@ -69,6 +65,18 @@ class BookMarkFragment : Fragment() {
                 binding.noResult.visibility = View.VISIBLE
             }
             volunteerAdapter.setData(viewModel.bookMarkList.value!!)
+        })
+
+        viewModel.isVolunteerExist.observe(viewLifecycleOwner, {
+            if (viewModel.isVolunteerExist.value!!) {
+                viewModel.isVolunteerExist.value = false
+                startActivity(Intent(mainActivity, DetailActivity::class.java).apply {
+                    putExtra("programId", viewModel.programId)
+                    putExtra("url", viewModel.url)
+                    putExtra("isBookMark", viewModel.isBookMark)
+                    putExtra("fromBookMark", viewModel.fromBookMark)
+                })
+            }
         })
     }
 }

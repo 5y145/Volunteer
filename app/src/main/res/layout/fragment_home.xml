@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appLabel"
         style="@style/app_label"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,47 +19,43 @@
         <TextView
             android:id="@+id/tvTitle"
             android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginBottom="@dimen/small_margin"
             style="@style/label_text"
-            android:text="봉사정보" />
+            android:text="봉사정보"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <Spinner
             android:id="@+id/snSido"
             android:layout_marginStart="@dimen/medium_margin"
-            android:paddingBottom="4dp"
+            android:layout_marginBottom="@dimen/small_margin"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
-            android:spinnerMode="dialog" />
+            android:spinnerMode="dialog"
+            app:layout_constraintStart_toEndOf="@+id/tvTitle"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <Spinner
             android:id="@+id/snGugun"
             android:layout_marginStart="@dimen/small_margin"
-            android:paddingBottom="4dp"
+            android:layout_marginBottom="@dimen/small_margin"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
-            android:spinnerMode="dialog" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:spinnerMode="dialog"
+            app:layout_constraintStart_toEndOf="@+id/snSido"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageButton
             android:id="@+id/ibSearch"
-            android:layout_marginEnd="@dimen/large_margin"
-            android:paddingBottom="4dp"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:layout_marginBottom="@dimen/small_margin"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="@drawable/sharp_search_24"
-            android:backgroundTint="@color/skyBlue"/>
-    </LinearLayout>
-
-    <View
-        android:id="@+id/v"
-        style="@style/app_divide"
-        app:layout_constraintTop_toBottomOf="@+id/appLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            android:backgroundTint="@color/skyBlue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/container"
@@ -67,11 +63,17 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:gravity="center"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/v"
+        app:layout_constraintTop_toBottomOf="@+id/appLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            style="@style/large_dark_text"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="내정보"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"

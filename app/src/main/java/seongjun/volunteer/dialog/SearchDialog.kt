@@ -4,13 +4,11 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
-import android.os.Build
 import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import seongjun.volunteer.R
 import seongjun.volunteer.model.AreaData

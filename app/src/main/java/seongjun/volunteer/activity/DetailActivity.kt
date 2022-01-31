@@ -28,6 +28,7 @@ class DetailActivity : AppCompatActivity() {
         viewModel.programId = intent.getStringExtra("programId").toString()
         viewModel.url = intent.getStringExtra("url").toString()
         viewModel.isBookMark = intent.getBooleanExtra("isBookMark", false)
+        viewModel.fromBookMark = intent.getBooleanExtra("fromBookMark", false)
         if (viewModel.programId != "") viewModel.getVolunteerDetail(viewModel.programId)
         setObserver()
     }
@@ -59,6 +60,7 @@ class DetailActivity : AppCompatActivity() {
         binding.tvManager.text = item.manager// 담당자
         binding.tvPhoneNumber.text = item.phoneNumber // 전화번호
         binding.tvEmail.text = if (viewModel.isEmail(item.email)) item.email else "" // 이메일
+        binding.llEmail.visibility = if (viewModel.isEmail(item.email)) View.VISIBLE else View.GONE // 이메일
 
         binding.btnUrl.setOnClickListener { // 신청 url
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.url)))

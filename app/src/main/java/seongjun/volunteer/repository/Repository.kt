@@ -25,8 +25,8 @@ class Repository(application : Application) {
     }
 
     // Use Retrofit
-    suspend fun getVolunteerList(startDay: String, endDay: String, sidoCode: String, gugunCode: String, pageNumber: Int): MutableList<VolunteerData> {
-        val response = RetrofitInstance.API.getVolunteerList(startDay, endDay, sidoCode, gugunCode, pageNumber)
+    suspend fun getVolunteerList(sidoCode: String, gugunCode: String, pageNumber: Int): MutableList<VolunteerData> {
+        val response = RetrofitInstance.API.getVolunteerList(sidoCode, gugunCode, pageNumber)
         return if (response.isSuccessful) response.body() as MutableList<VolunteerData> else ArrayList()
     }
 
@@ -37,7 +37,7 @@ class Repository(application : Application) {
 
     suspend fun getVolunteerDetail(programId: String): VolunteerDetailData? {
         val response = RetrofitInstance.API.getVolunteerDetail(programId)
-        return if (response.isSuccessful) response.body() as VolunteerDetailData else null
+        return if (response.isSuccessful) response.body() as VolunteerDetailData? else null
     }
 
     companion object {

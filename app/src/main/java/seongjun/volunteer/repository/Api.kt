@@ -7,8 +7,6 @@ import seongjun.volunteer.model.*
 interface Api {
     @GET("volunteer_list")
     suspend fun getVolunteerList(
-        @Query("progrmBgnde")startDay: String,
-        @Query("progrmEndde")endDay: String,
         @Query("schSido")sidoCode: String,
         @Query("schSign1")gugunCode: String,
         @Query("pageNo")pageNumber: Int

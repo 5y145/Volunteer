@@ -3,9 +3,10 @@
     <style name="app_label">
         <item name="android:paddingBottom">4dp</item>
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_height">56dp</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">bottom</item>
+        <item name="android:elevation">2.5dp</item>
         <item name="android:background">@color/white</item>
     </style>
     <style name="app_divide">

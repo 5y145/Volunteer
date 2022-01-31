@@ -23,6 +23,13 @@ class MainViewModel: ViewModel() {
     var startDay = ""
     var endDay = ""
 
+    // BookMark Fragment
+    var isVolunteerExist = MutableLiveData<Boolean>().apply { value = false }
+    var programId = ""
+    var url = ""
+    var isBookMark = false
+    var fromBookMark = false
+
     // List
     var volunteerList = MutableLiveData<MutableList<VolunteerData>>().apply { value = ArrayList() }
     val bookMarkList = repository.getBookMarkDataList()
@@ -33,11 +40,9 @@ class MainViewModel: ViewModel() {
             if (!isSearch) { // 기본 조회
                 if (!isLoading.value!! && !isEnd) {
                     isLoading.value = true
-                    val nextDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
-                    val nextWeek = LocalDate.now().plusDays(14).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
-                    val result = repository.getVolunteerList(nextDay, nextWeek, sidoCode, gugunCode, pageNumber)
+                    val result = repository.getVolunteerList(sidoCode, gugunCode, pageNumber)
                     if (result.isEmpty()) {
-                            isEnd = true
+                        isEnd = true
                     } else {
                         addList(result)
                         pageNumber++
@@ -93,6 +98,26 @@ class MainViewModel: ViewModel() {
         isEnd = false
         volunteerList.value!!.clear()
         getVolunteerList()
+    }
+
+    fun isVolunteerExist(programId: String, url: String, isBookMark: Boolean, fromBookMark: Boolean) {
+        viewModelScope.launch {
+            val volunteerDetailData = repository.getVolunteerDetail(programId)
+            if (volunteerDetailData != null) {
+                this@MainViewModel.programId = programId
+                this@MainViewModel.url = url
+                this@MainViewModel.isBookMark = isBookMark
+                this@MainViewModel.fromBookMark = fromBookMark
+                isVolunteerExist.value = true
+            }
+            else {
+                if (isBookMark) repository.removeBookMark(programId)
+                this@MainViewModel.programId = ""
+                this@MainViewModel.url = ""
+                this@MainViewModel.isBookMark = false
+                this@MainViewModel.fromBookMark = false
+            }
+        }
     }
 
     private fun addList(newList: MutableList<VolunteerData>) {
