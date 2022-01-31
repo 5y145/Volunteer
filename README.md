@@ -2,7 +2,7 @@
 
 <br>
 
-# 1365 봉사활동 ver.1.1
+# 1365 봉사활동 ver.1.3
  
 <p>
 <img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white"/>
@@ -18,6 +18,7 @@
 <br><br>
 
 ## Introduce
+
 ```
 1365 봉사활동 사이트의 정보를 쉽게 조회할 수 있습니다.
  - 지역별로 조회
@@ -27,15 +28,19 @@
  - 북마크 기능
 
 공공데이터 포털의 Open Api를 사용하였습니다.
- - 행정안전부 봉사 참여 정보 서비스
- - 행정안전부 코드 조회 서비스
+ - 행정안전부 봉사참여정보서비스
+ - 행정안전부 코드조회서비스
 ```
 
-|지역별로 조회|세부 옵션으로 조회|세부사항 조회|북마크 기능|더보기|
-|---|---|---|---|---|
-|<img src="https://user-images.githubusercontent.com/95672282/148494448-6ae896da-6dbb-4d3a-bf66-17f1f559db6a.jpg" width="100%" height="100%">|<img src="https://user-images.githubusercontent.com/95672282/148494677-e12b27e7-0c4c-4ec9-9b22-35717df83a7b.jpg" width="100%" height="100%">|<img src="https://user-images.githubusercontent.com/95672282/148494638-aba4c66e-1e55-4878-a216-d60db54edd4e.jpg" width="100%" height="100%">|<img src="https://user-images.githubusercontent.com/95672282/148495286-983f5e15-b3fe-407d-8091-4b1d830cee1c.jpg" width="100%" height="100%">|<img src="https://user-images.githubusercontent.com/95672282/148495343-d498d083-7cbe-4c55-8850-e272d126807a.jpg" width="100%" height="100%">|
+## ScreenShot
 
-## Tech
+<img src="https://user-images.githubusercontent.com/95672282/148668744-7e24d5e1-f5a0-4914-9865-febf319242de.jpg" width="33%" height="33%"><img src="https://user-images.githubusercontent.com/95672282/148668753-2eb0643e-c872-4e64-8d6f-39ecded9fdcd.jpg" width="33%" height="33%"><img src="https://user-images.githubusercontent.com/95672282/148668774-e900e353-17e0-47bb-875e-54030148ef9e.jpg" width="33%" height="33%">
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/95672282/148668810-6e7afa54-0001-45b4-bceb-e38df2b029e1.jpg" width="33%" height="33%"><img src="https://user-images.githubusercontent.com/95672282/148668875-270b7dda-2ad2-429b-933e-3444fa17593e.jpg" width="33%" height="33%"><img src="https://user-images.githubusercontent.com/95672282/148668822-37277eb5-5082-4974-8011-e5d72bec5412.jpg" width="33%" height="33%">
+
+## Skill
 
  - `Kotlin`
  - `JetPack`
