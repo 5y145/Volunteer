@@ -2,7 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="300dp"
+    android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center"
@@ -25,7 +25,12 @@
             android:backgroundTint="@color/skyBlue"/>
 
         <TextView
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginStart="@dimen/medium_margin"
+            style="@style/label_text"
+            android:text="Q &amp; A"/>
+
+        <TextView
+            android:layout_marginTop="48dp"
             android:layout_marginStart="@dimen/medium_margin"
             style="@style/large_dark_text"
             android:text="Q. 봉사 신청을 앱에서 바로 할 수 없나요?"/>
@@ -35,10 +40,10 @@
             android:layout_marginStart="@dimen/medium_margin"
             style="@style/small_text"
             android:fontFamily="@font/nanum_bold"
-            android:text="현재 앱은 신청에 대한 권한이 없습니다.\n불편하시겠지만 홈페이지에서 신청하셔야 합니다." />
+            android:text="현재 앱은 신청에 대한 권한이 없습니다.\n불편하시겠지만 사이트에서 신청하셔야 합니다." />
 
         <TextView
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:layout_marginStart="@dimen/medium_margin"
             style="@style/large_dark_text"
             android:text="Q. 북마크 추가는 어떻게 하나요?"/>
@@ -48,18 +53,18 @@
             android:layout_marginStart="@dimen/medium_margin"
             style="@style/small_text"
             android:fontFamily="@font/nanum_bold"
-            android:text="세부정보 화면의 초록 아이콘을 클릭해보세요!" />
+            android:text="세부정보 화면에서 초록색 아이콘을 클릭해보세요." />
 
         <TextView
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:layout_marginStart="@dimen/medium_margin"
             style="@style/large_dark_text"
-            android:text="Q. 앱에 대한 건의사항이 있습니다!"/>
+            android:text="Q. 앱에 대한 건의사항이 있습니다."/>
 
         <TextView
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginStart="@dimen/medium_margin"
-            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_marginBottom="48dp"
             style="@style/small_text"
             android:fontFamily="@font/nanum_bold"
             android:text="메일로 알려주시면 빠르게 반영하도록 하겠습니다." />

@@ -21,8 +21,10 @@ class SearchDialog(context : Context) {
     private val dialog = Dialog(context)
     private var sidoCode = ""
     private var gugunCode = ""
-    private var startDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
-    private var endDay = LocalDate.now().plusDays(14).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+    private var startDay = ""
+    private var endDay = ""
+//    private var startDay = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+//    private var endDay = LocalDate.now().plusDays(14).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
 
     @SuppressLint("SetTextI18n")
     fun showDialog(context : Context) {
@@ -60,6 +62,58 @@ class SearchDialog(context : Context) {
                                 snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.gyeonggiName)
                                 snGugun.visibility = View.VISIBLE
                             }
+                            "6260000" -> { // 부산
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.busanName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6270000" -> { // 대구
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.daeguName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6280000" -> { // 인천
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.incheonName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6290000" -> { // 광주
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.gangwondoName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6300000" -> { // 대전
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.daejeonName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6310000" -> { // 울산
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.ulsanName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6420000" -> { // 강원도
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.gangwondoName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6430000" -> { // 충청북도
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.chungcheongbukdoName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6440000" -> { // 충청남도
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.chungcheongnamdoName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6450000" -> { // 전라북도
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.jeonlabugdoName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6460000" -> { // 전라남도
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.jeonlanamdoName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6470000" -> { // 경상북도
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.gyeongsangbugdoName)
+                                snGugun.visibility = View.VISIBLE
+                            }
+                            "6480000" -> { // 경상남도
+                                snGugun.adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, AreaData.gyeongsangnamdoName)
+                                snGugun.visibility = View.VISIBLE
+                            }
                             else -> { snGugun.visibility = View.GONE }
                         }
                     }
@@ -75,6 +129,19 @@ class SearchDialog(context : Context) {
                         when(sidoCode) {
                             "6110000" -> gugunCode = AreaData.seoulCode[position] // 서울
                             "6410000" -> gugunCode = AreaData.gyeonggiCode[position] // 경기
+                            "6260000" -> gugunCode = AreaData.busanCode[position] // 부산
+                            "6270000" -> gugunCode = AreaData.daeguCode[position] // 대구
+                            "6280000" -> gugunCode = AreaData.incheonCode[position] // 인천
+                            "6290000" -> gugunCode = AreaData.gwangjuCode[position] // 광주
+                            "6300000" -> gugunCode = AreaData.daejeonCode[position] // 대전
+                            "6310000" -> gugunCode = AreaData.ulsanCode[position] // 울산
+                            "6420000" -> gugunCode = AreaData.gangwondoCode[position] // 강원도
+                            "6430000" -> gugunCode = AreaData.chungcheongbukdoCode[position] // 충청북도
+                            "6440000" -> gugunCode = AreaData.chungcheongnamdoCode[position] // 충청남도
+                            "6450000" -> gugunCode = AreaData.jeonlabugdoCode[position] // 전라북도
+                            "6460000" -> gugunCode = AreaData.jeonlanamdoCode[position] // 전라남도
+                            "6470000" -> gugunCode = AreaData.gyeongsangbugdoCode[position] // 경상북도
+                            "6480000" -> gugunCode = AreaData.gyeongsangnamdoCode[position] // 경상남도
                             else -> gugunCode = ""
                         }
                     }
@@ -108,8 +175,6 @@ class SearchDialog(context : Context) {
             imm.hideSoftInputFromWindow(etSearch.windowToken, 0)
         }
 
-        tvStartDay.text = dayToText(startDay)
-
         ibStartDay.setOnClickListener {
             val today = GregorianCalendar()
             val year: Int = today.get(Calendar.YEAR)
@@ -124,13 +189,11 @@ class SearchDialog(context : Context) {
             dlg.show()
         }
 
-        tvEndDay.text = dayToText(endDay)
-
         ibEndDay.setOnClickListener {
             val today = GregorianCalendar()
             val year: Int = today.get(Calendar.YEAR)
-            val month: Int = today.get(Calendar.MONTH)
-            val date: Int = today.get(Calendar.DATE).plus(14)
+            val month: Int = today.get(Calendar.MONTH).plus(1)
+            val date: Int = today.get(Calendar.DATE)
             val dlg = DatePickerDialog(context, { view, year, month, dayOfMonth ->
                     val m = if (month + 1 < 10) "0${month + 1}" else "${month + 1}"
                     val d = if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"

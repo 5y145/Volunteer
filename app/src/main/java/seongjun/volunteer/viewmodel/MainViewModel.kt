@@ -1,11 +1,10 @@
 package seongjun.volunteer.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import seongjun.volunteer.model.VolunteerData
 import seongjun.volunteer.repository.Repository
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class MainViewModel: ViewModel() {
 
@@ -53,13 +52,11 @@ class MainViewModel: ViewModel() {
             } else { // 상세 조회
                 if (!isLoading.value!! && !isEnd) {
                     isLoading.value = true
-                    val result = repository.getVolunteerListWithText(startDay, endDay, searchText, sidoCode, gugunCode,  pageNumber)
-                    if (result.isEmpty()) {
-                        isEnd = true
-                    } else {
-                        addList(result)
-                        pageNumber++
-                    }
+                    val result =
+                        if(sidoCode == "" && gugunCode == "" && startDay == "" && endDay == "") { repository.getVolunteerListWithKeyword(searchText, pageNumber) }
+                        else { repository.getVolunteerListWithOption(startDay, endDay, searchText, sidoCode, gugunCode,  pageNumber) }
+                    if (result.isNotEmpty()) addList(result)
+                    isEnd = true
                     isComplete.value = true
                     isLoading.value = false
                 }

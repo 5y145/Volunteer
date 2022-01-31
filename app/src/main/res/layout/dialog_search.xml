@@ -122,7 +122,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="bottom"
                     style="@style/medium_dark_text"
-                    android:text="000000"
+                    android:text=""
                     android:textColor="@color/skyBlue"/>
 
                 <ImageButton
@@ -157,7 +157,7 @@
                     android:layout_gravity="bottom"
                     style="@style/medium_dark_text"
                     android:textColor="@color/skyBlue"
-                    android:text="000000" />
+                    android:text="" />
 
                 <ImageButton
                     android:id="@+id/ibEndDay"

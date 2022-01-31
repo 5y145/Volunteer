@@ -8,8 +8,7 @@
 
     <TextView
         android:id="@+id/tvDay"
-        android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginVertical="@dimen/small_margin"
         style="@style/small_dark_text"
         android:text="00/00 ~ 00/00"
         android:textColor="@color/skyBlue"
@@ -27,9 +26,8 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginHorizontal="@dimen/small_margin"
-        style="@style/large_dark_text"
+        android:layout_marginVertical="@dimen/small_margin"
+        style="@style/medium_dark_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
@@ -39,7 +37,7 @@
 
     <TextView
         android:id="@+id/tvHost"
-        android:layout_margin="@dimen/small_margin"
+        android:layout_marginVertical="@dimen/small_margin"
         style="@style/small_text"
         android:text="host"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"

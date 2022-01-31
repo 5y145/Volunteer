@@ -156,6 +156,58 @@ class HomeFragment : Fragment() {
                 binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.gyeonggiName)
                 binding.snGugun.visibility = View.VISIBLE
             }
+            "6260000" -> { // 부산
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.busanName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6270000" -> { // 대구
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.daeguName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6280000" -> { // 인천
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.incheonName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6290000" -> { // 광주
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.gangwondoName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6300000" -> { // 대전
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.daejeonName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6310000" -> { // 울산
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.ulsanName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6420000" -> { // 강원도
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.gangwondoName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6430000" -> { // 충청북도
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.chungcheongbukdoName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6440000" -> { // 충청남도
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.chungcheongnamdoName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6450000" -> { // 전라북도
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.jeonlabugdoName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6460000" -> { // 전라남도
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.jeonlanamdoName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6470000" -> { // 경상북도
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.gyeongsangbugdoName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
+            "6480000" -> { // 경상남도
+                binding.snGugun.adapter = ArrayAdapter1(mainActivity, android.R.layout.simple_spinner_dropdown_item, AreaData.gyeongsangnamdoName)
+                binding.snGugun.visibility = View.VISIBLE
+            }
             else -> { binding.snGugun.visibility = View.GONE }
         }
         viewModel.clickSido(AreaData.sidoCode[position])
@@ -164,8 +216,21 @@ class HomeFragment : Fragment() {
     private fun clickGugun(position: Int) {
         binding.container.visibility = View.GONE
         when(viewModel.sidoCode) {
-            "6110000" -> viewModel.clickGugun(AreaData.seoulCode[position])
-            "6410000" -> viewModel.clickGugun(AreaData.gyeonggiCode[position])
+            "6110000" -> viewModel.clickGugun(AreaData.seoulCode[position]) // 서울
+            "6410000" -> viewModel.clickGugun(AreaData.gyeonggiCode[position]) // 경기
+            "6260000" -> viewModel.clickGugun(AreaData.busanCode[position]) // 부산
+            "6270000" -> viewModel.clickGugun(AreaData.daeguCode[position]) // 대구
+            "6280000" -> viewModel.clickGugun(AreaData.incheonCode[position]) // 인천
+            "6290000" -> viewModel.clickGugun(AreaData.gwangjuCode[position]) // 광주
+            "6300000" -> viewModel.clickGugun(AreaData.daejeonCode[position]) // 대전
+            "6310000" -> viewModel.clickGugun(AreaData.ulsanCode[position]) // 울산
+            "6420000" -> viewModel.clickGugun(AreaData.gangwondoCode[position]) // 강원도
+            "6430000" -> viewModel.clickGugun(AreaData.chungcheongbukdoCode[position]) // 충청북도
+            "6440000" -> viewModel.clickGugun(AreaData.chungcheongnamdoCode[position]) // 충청남도
+            "6450000" -> viewModel.clickGugun(AreaData.jeonlabugdoCode[position]) // 전라북도
+            "6460000" -> viewModel.clickGugun(AreaData.jeonlanamdoCode[position]) // 전라남도
+            "6470000" -> viewModel.clickGugun(AreaData.gyeongsangbugdoCode[position]) // 경상북도
+            "6480000" -> viewModel.clickGugun(AreaData.gyeongsangnamdoCode[position]) // 경상남도
             else -> viewModel.clickGugun("")
         }
     }
